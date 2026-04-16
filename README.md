@@ -6,6 +6,12 @@ Pair Fate is a multiplayer co-op puzzle game built using Godot 4 and C#. The pro
 
 This project was designed as a networked multiplayer game where players must cooperate to solve environment-based challenges. The system emphasizes smooth state synchronization between players while maintaining responsive movement and interaction.
 
+## Presentation
+
+Project presentation slides:
+
+https://docs.google.com/presentation/d/1tCCCkmR-M7ka1J3-UTmy-YjkM3RYJhBmPO6waozwzKY
+
 ## Features
 
 - Real-time multiplayer gameplay  
