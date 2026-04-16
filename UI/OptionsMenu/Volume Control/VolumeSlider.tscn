@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://drjmj8lls57w6"]
+
+[ext_resource type="Texture2D" uid="uid://b1hw6fb70pr68" path="res://UI/OptionsMenu/Volume Control/sound_slider.png" id="1_5ujjn"]
+[ext_resource type="Script" path="res://UI/OptionsMenu/Volume Control/VolumeSlider.cs" id="1_w62bb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x25v0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_py06m"]
+
+[node name="VolumeSlider" type="VSlider"]
+offset_right = 16.0
+offset_bottom = 51.0
+theme_override_icons/grabber = ExtResource("1_5ujjn")
+theme_override_icons/grabber_highlight = ExtResource("1_5ujjn")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_x25v0")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_py06m")
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_w62bb")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch0v14suro1dv"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_87s4l"]
+[ext_resource type="Texture2D" uid="uid://cakmquey2ugbx" path="res://Rooms/Wing1/JelloRoom/JelloedKey.png" id="1_pbdn6"]
+[ext_resource type="Script" path="res://Rooms/Wing1/JelloRoom/JelloKey.cs" id="2_q3vi4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sys6"]
+resource_local_to_scene = true
+shader = ExtResource("1_87s4l")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="JelloKey" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_1sys6")
+scale = Vector2(5, 5)
+texture = ExtResource("1_pbdn6")
+script = ExtResource("2_q3vi4")

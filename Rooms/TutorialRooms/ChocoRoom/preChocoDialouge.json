@@ -1,0 +1,38 @@
+[
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Great job defeating GELATON! its been years since someone has accomplished that."
+	},
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "Thanks, I feel like you could've prepared us a bit better..."
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "yeah! that was like totally not fair?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Anyways, we dont have much time, theres still alot for yall to learn!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "We are surrounded by molten chocolate, lucky for you, you can create platforms by splashing milk onto the chocolate."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "To refill the bucket, go to the [WATER FAUCET] and press [E]"
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "Thats good and all, but where is my bucket? SCARLET is the only one with a bucket."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "You can throw items by [HOLDING DOWN F] with it equipped."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Good luck and I'll see you in the next room."
+	}
+]

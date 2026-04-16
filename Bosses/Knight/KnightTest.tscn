@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk8jyo61676jf"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_4hrqn"]
+[ext_resource type="Texture2D" uid="uid://d2utubkhxhay1" path="res://Rooms/TutorialRooms/TutorialRoom2/TutorialHallway2.png" id="2_dpidf"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="3_8n4pn"]
+[ext_resource type="PackedScene" uid="uid://dpi4uufxabxo2" path="res://Gameplay/DialogueManager.tscn" id="4_kvurf"]
+[ext_resource type="Shader" path="res://Bosses/Knight/KnightEffects/KnightEffects.gdshader" id="5_812v2"]
+[ext_resource type="Script" path="res://Bosses/Knight/KnightEffects/KnightEffects.cs" id="5_y31ax"]
+[ext_resource type="Script" path="res://Bosses/Knight/KnightCavity/KnightCavity.cs" id="7_xt3sd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5s7b"]
+size = Vector2(1063.4, 63.0047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bojnh"]
+size = Vector2(68.2411, 763.308)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_shw3k"]
+shader = ExtResource("5_812v2")
+shader_parameter/div_offset = 7
+shader_parameter/fragmented = false
+shader_parameter/flip_y = false
+shader_parameter/div_burned = 3.0
+shader_parameter/div_burned2 = -1.0
+shader_parameter/burn = 0.0
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_4hrqn")
+bgm_path = "res://Sound/BackgroundTracks/2023-12-22_-_Divine_Ascension_-_www.FesliyanStudios.com.mp3"
+item_scenes = Array[PackedScene]([])
+interactable_scenes = Array[PackedScene]([])
+boss_scenes = Array[PackedScene]([])
+ROOM_RIGHT = 1920
+ROOM_BOTTOM = 1740
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -5
+offset_left = 21.0
+offset_top = 980.0
+offset_right = 2572.0
+offset_bottom = 1930.0
+color = Color(0.494118, 0.368627, 0.00784314, 0.760784)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(1018, 974)
+scale = Vector2(4, 4)
+texture = ExtResource("2_dpidf")
+
+[node name="Boundaries" type="Node2D" parent="."]
+scale = Vector2(2.48256, 2.48256)
+
+[node name="BoundaryCollision" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(402.81, 243.297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision"]
+position = Vector2(118.426, 120.44)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(805.62, 486.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision2"]
+position = Vector2(-301.302, 243.7)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-47.1288, 406.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision3"]
+position = Vector2(12.4873, 37.269)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="BoundaryCollision4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1611.24, 973.189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision4"]
+position = Vector2(-809.648, -450.744)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1132, 1439)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(952, 1437)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="DoorManager" parent="." instance=ExtResource("3_8n4pn")]
+Door_Destination_Strings = PackedStringArray()
+
+[node name="DialogueManager" parent="." instance=ExtResource("4_kvurf")]
+Dialogue_Paths = PackedStringArray("Rooms/TutorialRooms/TutorialRoom1/TutorialDialogue1.json")
+
+[node name="ExtraEntities" type="Node2D" parent="."]
+
+[node name="KnightEffects" type="CanvasLayer" parent="ExtraEntities"]
+script = ExtResource("5_y31ax")
+
+[node name="KnightEffectsOverlay" type="ColorRect" parent="ExtraEntities/KnightEffects"]
+material = SubResource("ShaderMaterial_shw3k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KnightCavity" type="Node2D" parent="ExtraEntities"]
+position = Vector2(363, 1305)
+script = ExtResource("7_xt3sd")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct62ltt78twca"]
+
+[ext_resource type="Texture2D" uid="uid://bqe5flsqg0fgt" path="res://Player/PlayerItems/CandyCane/scythe_arc.png" id="1_4vhr0"]
+[ext_resource type="Script" path="res://Player/PlayerItems/CandyCane/CandyScytheArc.cs" id="1_53lkd"]
+
+[node name="CandyScytheArc" type="Node2D"]
+script = ExtResource("1_53lkd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
+position = Vector2(3.51292, 0.305735)
+rotation = 1.81716
+scale = Vector2(2.19002, 1.6578)
+texture = ExtResource("1_4vhr0")

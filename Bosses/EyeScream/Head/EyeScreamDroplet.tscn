@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://du08jg3r38cnr"]
+
+[ext_resource type="Texture2D" uid="uid://dtiai7e3hqjm1" path="res://Bosses/EyeScream/Head/TearPlaceholder.png" id="1_4tu5h"]
+[ext_resource type="Script" path="res://Bosses/EyeScream/Head/EyeScreamDroplet.cs" id="2_7yef5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_so4d2"]
+radius = 10.0125
+
+[node name="EyeScreamDroplet" type="Sprite2D"]
+z_index = 15
+scale = Vector2(2, 2)
+texture = ExtResource("1_4tu5h")
+script = ExtResource("2_7yef5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_so4d2")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

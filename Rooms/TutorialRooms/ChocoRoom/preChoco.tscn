@@ -1,0 +1,163 @@
+[gd_scene load_steps=18 format=3 uid="uid://b8p5jxdm04epy"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_y24gn"]
+[ext_resource type="PackedScene" uid="uid://b804p7twvfoot" path="res://Tilemaps/Wing1/BorderDecoration.tscn" id="2_ddtdd"]
+[ext_resource type="PackedScene" uid="uid://oiiqnpxr38f2" path="res://Player/PlayerItems/WaterBucket/WaterBucket.tscn" id="2_qglxb"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="3_f1n22"]
+[ext_resource type="PackedScene" uid="uid://d4b866ua030vt" path="res://Interactables/InteractDoors/InteractableDoor.tscn" id="3_is1rg"]
+[ext_resource type="PackedScene" uid="uid://bvyumypevlu3d" path="res://Interactables/WaterFaucet/InteractableWaterFaucet.tscn" id="4_1jwev"]
+[ext_resource type="PackedScene" uid="uid://dpi4uufxabxo2" path="res://Gameplay/DialogueManager.tscn" id="4_ctle8"]
+[ext_resource type="PackedScene" uid="uid://c1wkfuqvtuo4x" path="res://Interactables/KnightDialogue/knight.tscn" id="5_xklma"]
+[ext_resource type="Script" path="res://Rooms/TutorialRooms/ChocoRoom/Lava.cs" id="8_0idwf"]
+[ext_resource type="Texture2D" uid="uid://d1ludximx0wt7" path="res://Bosses/Oven/OvenBody/OvenBodySprites/Lava1.png" id="8_a311o"]
+[ext_resource type="Script" path="res://Rooms/TutorialRooms/ChocoRoom/preChocoController.cs" id="9_thmcu"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenChocolate/ChocolateColumn.cs" id="10_l4hb4"]
+[ext_resource type="Texture2D" uid="uid://c6f454rpti2sm" path="res://Bosses/Oven/OvenBody/OvenBodySprites/Lava3.png" id="11_22dno"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenChocolate/ChocolateColumnCollision.cs" id="11_o5uya"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q5ng"]
+size = Vector2(2098, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgse2"]
+size = Vector2(89, 1460)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wss13"]
+size = Vector2(793, 684.5)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_y24gn")
+bgm_path = "res://Sound/BackgroundTracks/walking_thru_castle.wav"
+item_scenes = Array[PackedScene]([ExtResource("2_qglxb")])
+interactable_scenes = Array[PackedScene]([ExtResource("3_is1rg"), ExtResource("4_1jwev"), ExtResource("4_1jwev"), ExtResource("5_xklma")])
+boss_scenes = Array[PackedScene]([])
+ROOM_RIGHT = 2000
+ROOM_TOP = -400
+ROOM_BOTTOM = 2000
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-83, 1073)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+position = Vector2(1039, 37.5)
+shape = SubResource("RectangleShape2D_7q5ng")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-74, -92)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+position = Vector2(1039, 37.5)
+shape = SubResource("RectangleShape2D_7q5ng")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-48, 419)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+position = Vector2(2.5, 8)
+shape = SubResource("RectangleShape2D_hgse2")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1965, 416)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+position = Vector2(2.5, 8)
+shape = SubResource("RectangleShape2D_hgse2")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TileMap" parent="Background" instance=ExtResource("2_ddtdd")]
+layer_0/tile_data = PackedInt32Array(393274, 327680, 1)
+layer_1/tile_data = PackedInt32Array(720896, 196608, 4, 720897, 327680, 2, 720898, 327680, 2, 720899, 327680, 2, 720900, 327680, 2, 720901, 327680, 2, 720902, 327680, 2, 720903, 327680, 2, 720904, 327680, 2, 720905, 327680, 2, 720906, 327680, 2, 720907, 327680, 2, 720908, 327680, 2, 720909, 327680, 2, 720910, 327680, 2, 720911, 327680, 2, 720912, 327680, 2, 720913, 327680, 2, 720914, 327680, 2, 720915, 327680, 2, 262143, 524288, 1, 327679, 524288, 1, 393215, 524288, 1, 458751, 524288, 1, 524287, 524288, 1, 589823, 524288, 1, 655359, 524288, 1, 720895, 524288, 1, 196607, 524288, 1, 131071, 524288, 1, 65535, 524288, 1, 20, 458752, 1, 65556, 458752, 1, 131092, 458752, 1, 196628, 458752, 1, 262164, 458752, 1, 327700, 458752, 1, 393236, 458752, 1, 458772, 458752, 1, 524308, 458752, 1, 589844, 458752, 1, 655380, 458752, 1, -65536, 262144, 3, -65535, 262144, 3, -65534, 262144, 3, -65533, 262144, 3, -65532, 262144, 3, -65531, 262144, 3, -65530, 262144, 3, -65523, 262144, 3, -65522, 262144, 3, -65521, 262144, 3, -65520, 262144, 3, -65519, 262144, 3, -65518, 262144, 3, -65517, 262144, 3, -131072, 262144, 3, -131071, 262144, 3, -131070, 262144, 3, -131069, 262144, 3, -131068, 262144, 3, -131067, 262144, 3, -131066, 262144, 3, -131059, 262144, 3, -131058, 262144, 3, -131057, 262144, 3, -131056, 262144, 3, -131055, 262144, 3, -131054, 262144, 3, -131053, 262144, 3, -196608, 262144, 2, -196607, 262144, 2, -196606, 262144, 2, -196605, 262144, 2, -196604, 262144, 2, -196603, 262144, 2, -196602, 262144, 2, -196595, 262144, 2, -196594, 262144, 2, -196593, 262144, 2, -196592, 262144, 2, -196591, 262144, 2, -196590, 262144, 2, -196589, 262144, 2, -262144, 458752, 5, -262143, 458752, 5, -262142, 458752, 5, -262141, 458752, 5, -262140, 458752, 5, -262139, 458752, 5, -262138, 458752, 5, -262131, 458752, 5, -262130, 458752, 5, -262129, 458752, 5, -262128, 458752, 5, -262127, 458752, 5, -262126, 458752, 5, -262125, 458752, 5, -65516, 458752, 1, -131052, 458752, 1, -196588, 458752, 1, 720916, 393216, 1, 786431, 327680, 1, -1, 524288, 1, -65537, 524288, 1, -131073, 524288, 1, 1048690, 524288, 1, -262124, 1, 0, -196601, 262144, 3, -131065, 262144, 3, -65529, 262144, 3, -196600, 262144, 3, -131064, 262144, 3, -65528, 262144, 3, -196599, 262144, 3, -131063, 262144, 3, -65527, 262144, 3, -196598, 262144, 3, -131062, 262144, 3, -65526, 262144, 3, -196597, 262144, 3, -131061, 262144, 3, -65525, 262144, 3, -196596, 262144, 3, -131060, 262144, 3, -65524, 262144, 3, -262137, 458752, 5, -262136, 458752, 5, -262135, 458752, 5, -262134, 458752, 5, -262133, 458752, 5, -262132, 458752, 5)
+layer_2/tile_data = PackedInt32Array(-131066, 1179648, 0, -131059, 1179648, 0, -131067, 1703936, 0, -131058, 1703936, 0, -131055, 1310720, 0, -131070, 1310720, 0, -131071, 786432, 0, -131054, 786432, 0)
+
+[node name="TileMap2" parent="Background" instance=ExtResource("2_ddtdd")]
+scale = Vector2(6, 3)
+layer_0/tile_data = PackedInt32Array(65536, 196608, 3, 589824, 196608, 3, 655360, 196608, 3, 65537, 196608, 3, 589825, 196608, 3, 655361, 196608, 3, 65538, 196608, 3, 589826, 196608, 3, 655362, 196608, 3, 65539, 196608, 3, 589827, 196608, 3, 655363, 196608, 3, 65540, 196608, 3, 65541, 196608, 3, 65542, 196608, 3, 589830, 196608, 3, 655366, 196608, 3, 65543, 196608, 3, 589831, 196608, 3, 655367, 196608, 3, 0, 196608, 2, 1, 196608, 2, 2, 196608, 2, 3, 196608, 2, 4, 196608, 2, 5, 196608, 2, 6, 196608, 2, 7, 196608, 2, 9, 196608, 2, 8, 196608, 2, 65545, 196608, 3, 589833, 196608, 3, 655369, 196608, 3, 65544, 196608, 3, 589832, 196608, 3, 655368, 196608, 3, 393274, 327680, 1)
+layer_1/tile_data = PackedInt32Array(1048690, 524288, 1)
+layer_2/tile_data = PackedInt32Array()
+
+[node name="TextureRect" type="TextureRect" parent="Background/TileMap2"]
+z_index = -5
+offset_left = -20.0
+offset_top = 45.0
+offset_right = 340.0
+offset_bottom = 305.0
+texture = ExtResource("8_a311o")
+stretch_mode = 1
+script = ExtResource("8_0idwf")
+
+[node name="TextureRect2" type="TextureRect" parent="Background/TileMap2"]
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 192.0
+offset_bottom = 352.0
+texture = ExtResource("11_22dno")
+stretch_mode = 1
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(285, 1037)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1636, 1056)
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(956, 4)
+
+[node name="1" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(86, 951)
+
+[node name="2" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(1810, 961)
+
+[node name="3" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(707, 891)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(376, 857)
+
+[node name="ExtraEntities" type="Node2D" parent="."]
+
+[node name="preChocoController" type="Node2D" parent="ExtraEntities"]
+script = ExtResource("9_thmcu")
+
+[node name="ChocolateCol1" type="Node2D" parent="ExtraEntities/preChocoController"]
+z_index = -3
+position = Vector2(0, 192)
+script = ExtResource("10_l4hb4")
+WIDTH = 760
+HEIGHT = 680
+
+[node name="ChocolateColumnCollision" type="Area2D" parent="ExtraEntities/preChocoController/ChocolateCol1"]
+script = ExtResource("11_o5uya")
+
+[node name="ChocolateColumnCollisionShape" type="CollisionShape2D" parent="ExtraEntities/preChocoController/ChocolateCol1/ChocolateColumnCollision"]
+position = Vector2(382, 344)
+shape = SubResource("RectangleShape2D_wss13")
+
+[node name="ChocolateCol2" type="Node2D" parent="ExtraEntities/preChocoController"]
+z_index = -3
+position = Vector2(1152, 192)
+script = ExtResource("10_l4hb4")
+WIDTH = 760
+HEIGHT = 680
+
+[node name="ChocolateColumnCollision" type="Area2D" parent="ExtraEntities/preChocoController/ChocolateCol2"]
+script = ExtResource("11_o5uya")
+
+[node name="ChocolateColumnCollisionShape1" type="CollisionShape2D" parent="ExtraEntities/preChocoController/ChocolateCol2/ChocolateColumnCollision"]
+position = Vector2(385.5, 342.75)
+shape = SubResource("RectangleShape2D_wss13")
+
+[node name="DoorManager" parent="." instance=ExtResource("3_f1n22")]
+Door_Destination_Strings = PackedStringArray("res://Rooms/TutorialRooms/ChocoRoom2/preChoco2.tscn")
+Door_Destination_Indices = PackedInt32Array(0)
+
+[node name="DialogueManager" parent="." instance=ExtResource("4_ctle8")]
+Dialogue_Paths = PackedStringArray("Rooms/TutorialRooms/ChocoRoom/preChocoDialouge.json")

@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dxt6u3mlnnkt3"]
+
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/CandleMissile/CandleMissile.cs" id="1_575rh"]
+[ext_resource type="Texture2D" uid="uid://dr7c3ikb7ddjc" path="res://Bosses/IsaiahBoss/StagePlatform/CandleMissile/candle_missle_off.png" id="2_dqmo3"]
+[ext_resource type="Texture2D" uid="uid://m8bk3l5kt7tc" path="res://Bosses/IsaiahBoss/StagePlatform/CandleMissile/candle_missile.png" id="2_e0aip"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/CandleMissile/CandleMissileHitbox.cs" id="3_xkdyb"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_7cw6p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbghg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dqmo3")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e0aip")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di73l"]
+size = Vector2(53, 386.667)
+
+[sub_resource type="Curve" id="Curve_gaed8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.21978), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CandleMissile" type="Node2D"]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_575rh")
+
+[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.94026e-11, 0)
+rotation = 1.57079
+scale = Vector2(5.78445, 5.78445)
+sprite_frames = SubResource("SpriteFrames_wbghg")
+animation = &"on"
+
+[node name="CandleMissileHitbox" type="Area2D" parent="."]
+visible = false
+rotation = 1.57079
+script = ExtResource("3_xkdyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CandleMissileHitbox"]
+position = Vector2(6.89196e-12, 5.08626e-06)
+shape = SubResource("RectangleShape2D_di73l")
+
+[node name="LightParticles" type="CPUParticles2D" parent="."]
+position = Vector2(148, -1.33333)
+emitting = false
+amount = 10
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(10, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angular_velocity_min = 50.0
+angular_velocity_max = 100.0
+angle_max = 180.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_gaed8")
+color = Color(0.819608, 0.360784, 0, 1)
+
+[node name="SoundPlayer" parent="." instance=ExtResource("5_7cw6p")]
+effect_names = PackedStringArray("whoosh")
+effect_files = PackedStringArray("res://Bosses/IsaiahBoss/StagePlatform/CandleMissile/whoosh1.wav")
+
+[connection signal="area_entered" from="CandleMissileHitbox" to="CandleMissileHitbox" method="_on_area_entered"]

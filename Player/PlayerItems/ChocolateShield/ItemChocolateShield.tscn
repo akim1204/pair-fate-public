@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceqgi1ix0py4p"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_ba7gh"]
+[ext_resource type="Texture2D" uid="uid://p5mlpu3iefpw" path="res://Player/PlayerItems/ChocolateShield/Chocolate Shield.png" id="2_e7xja"]
+[ext_resource type="Script" path="res://Player/PlayerItems/ChocolateShield/ItemChocolateShield.cs" id="3_ox0oi"]
+[ext_resource type="Script" path="res://Player/PlayerItems/PlayerShieldHitbox.cs" id="4_47aha"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_gueoa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_478he"]
+resource_local_to_scene = true
+shader = ExtResource("1_ba7gh")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/active = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjron"]
+size = Vector2(33.3334, 38.25)
+
+[node name="ItemChocolateShield" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_478he")
+scale = Vector2(3, 4)
+texture = ExtResource("2_e7xja")
+script = ExtResource("3_ox0oi")
+
+[node name="ChocolateShieldArea" type="Area2D" parent="."]
+script = ExtResource("4_47aha")
+
+[node name="ChocolateShieldCollider" type="CollisionShape2D" parent="ChocolateShieldArea"]
+position = Vector2(6.66666, -0.375)
+shape = SubResource("RectangleShape2D_jjron")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("5_gueoa")]
+effect_names = PackedStringArray("Deflect")
+effect_files = PackedStringArray("res://Player/PlayerItems/ChocolateShield/ShieldHitSound.wav")

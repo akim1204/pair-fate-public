@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://dx8gt0j2bbyr3"]
+
+[ext_resource type="Script" path="res://Bosses/EyeScream/Head/IceScreamHead.cs" id="1_ghgau"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="2_6s2kp"]
+[ext_resource type="Texture2D" uid="uid://bnmofq65h7ahr" path="res://Bosses/EyeScream/Head/HeadSprite.png" id="2_pcm6f"]
+[ext_resource type="PackedScene" uid="uid://bfyxvtby0utq7" path="res://Bosses/EyeScream/Head/EyeScreamArm.tscn" id="3_n3gdf"]
+[ext_resource type="Shader" path="res://Bosses/EyeScream/Head/ShadowShader.gdshader" id="4_rka54"]
+[ext_resource type="Texture2D" uid="uid://108gqgef1i5h" path="res://GeneralAssets/Sprites/SolidShadowSprite.png" id="5_mmqv2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kwng"]
+shader = ExtResource("4_rka54")
+
+[node name="EyeScreamHead" type="Node2D"]
+z_index = 5
+position = Vector2(1280, 0)
+script = ExtResource("1_ghgau")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("2_6s2kp")]
+effect_names = PackedStringArray("Droplet", "RotateShort", "RotateLong")
+effect_files = PackedStringArray("res://Bosses/EyeScream/SoundEffects/Droplet.mp3", "res://Bosses/EyeScream/SoundEffects/RotateShort.mp3", "res://Bosses/EyeScream/SoundEffects/RotateLong.mp3")
+
+[node name="HeadSprite" type="Sprite2D" parent="."]
+z_index = -20
+scale = Vector2(7.5, -7.5)
+texture = ExtResource("2_pcm6f")
+hframes = 5
+frame = 3
+
+[node name="RightArm" parent="." instance=ExtResource("3_n3gdf")]
+z_index = -11
+position = Vector2(400, -225)
+scale = Vector2(2.5, 2.5)
+orientation = -1
+
+[node name="ShadowFinger1" parent="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter" index="0"]
+orientation = -1
+
+[node name="ShadowFinger3" parent="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter" index="2"]
+position = Vector2(-70, -45)
+orientation = -1
+
+[node name="Finger1" parent="RightArm/Arm1/Arm2/Arm3/EyeScreamHand" index="1"]
+orientation = -1
+
+[node name="Finger3" parent="RightArm/Arm1/Arm2/Arm3/EyeScreamHand" index="3"]
+position = Vector2(-70, -45)
+orientation = -1
+
+[node name="LeftArm" parent="." instance=ExtResource("3_n3gdf")]
+z_index = -11
+position = Vector2(-300, -225)
+scale = Vector2(2.5, 2.5)
+
+[node name="ShadowFinger1" parent="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter" index="0"]
+position = Vector2(-10, 45)
+
+[node name="ShadowFinger2" parent="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter" index="1"]
+position = Vector2(-10, -45)
+orientation = -1
+
+[node name="Finger1" parent="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand" index="1"]
+position = Vector2(-10, 45)
+
+[node name="Finger2" parent="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand" index="2"]
+position = Vector2(-10, -45)
+orientation = -1
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+self_modulate = Color(1, 1, 1, 0.584314)
+
+[node name="HeadShadow" type="Sprite2D" parent="CanvasGroup"]
+z_index = -5
+material = SubResource("ShaderMaterial_3kwng")
+scale = Vector2(9, 12)
+texture = ExtResource("5_mmqv2")
+
+[node name="HeadShadow2" type="Sprite2D" parent="CanvasGroup"]
+z_index = -5
+material = SubResource("ShaderMaterial_3kwng")
+scale = Vector2(11, 20)
+texture = ExtResource("5_mmqv2")
+
+[node name="HeadShadow3" type="Sprite2D" parent="CanvasGroup"]
+z_index = -5
+material = SubResource("ShaderMaterial_3kwng")
+scale = Vector2(15, 21)
+texture = ExtResource("5_mmqv2")
+
+[editable path="RightArm"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger1"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger2"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger3"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger1"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger2"]
+[editable path="RightArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger3"]
+[editable path="LeftArm"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger1"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger2"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/ShadowCenter/ShadowFinger3"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger1"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger2"]
+[editable path="LeftArm/Arm1/Arm2/Arm3/EyeScreamHand/Finger3"]

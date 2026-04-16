@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkjnyt8dwhvmy"]
+
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnake/OvenSnakeLeg.cs" id="1_rhllo"]
+[ext_resource type="Texture2D" uid="uid://tmc5xdpn8cak" path="res://Bosses/Oven/OvenSnake/OvenSnakeSprites/SnakeForearm.png" id="2_ccavh"]
+[ext_resource type="Texture2D" uid="uid://c68qg2cjsvw7e" path="res://Bosses/Oven/OvenSnake/OvenSnakeSprites/SnakeBrachium.png" id="3_o3ell"]
+
+[node name="OvenSnakeLeg" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_rhllo")
+
+[node name="Brachium" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_ccavh")
+offset = Vector2(10, 0)
+
+[node name="Forearm" type="Sprite2D" parent="Brachium"]
+position = Vector2(20, 0)
+texture = ExtResource("3_o3ell")
+offset = Vector2(10, 0)

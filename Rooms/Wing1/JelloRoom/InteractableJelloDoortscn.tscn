@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://5is1m475pofy"]
+
+[ext_resource type="Texture2D" uid="uid://bt6dkky5tr04" path="res://Rooms/Wing1/JelloRoom/LargeDoor.png" id="1_0k410"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_v08t2"]
+[ext_resource type="Script" path="res://Rooms/Wing1/JelloRoom/InteractableJelloDoor.cs" id="2_41pok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rv0u"]
+resource_local_to_scene = true
+shader = ExtResource("1_v08t2")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/active = false
+
+[node name="JelloGiantDoor" type="Sprite2D"]
+z_index = -5
+material = SubResource("ShaderMaterial_0rv0u")
+scale = Vector2(6, 6)
+texture = ExtResource("1_0k410")
+offset = Vector2(0, -30)
+script = ExtResource("2_41pok")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://oiiqnpxr38f2"]
+
+[ext_resource type="PackedScene" uid="uid://d07ofevjyd5ct" path="res://Player/PlayerItems/Item.tscn" id="1_d5kes"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="2_dos1m"]
+[ext_resource type="Texture2D" uid="uid://cgsxqj2m5w8ir" path="res://Player/PlayerItems/WaterBucket/WaterBucket.png" id="3_tv757"]
+[ext_resource type="Script" path="res://Player/PlayerItems/WaterBucket/ItemWaterBucket.cs" id="4_p4q5j"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_e5egv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18cid"]
+resource_local_to_scene = true
+shader = ExtResource("2_dos1m")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="ItemWaterBucket" instance=ExtResource("1_d5kes")]
+material = SubResource("ShaderMaterial_18cid")
+position = Vector2(0, 0)
+texture = ExtResource("3_tv757")
+offset = Vector2(0, -24)
+hframes = 4
+script = ExtResource("4_p4q5j")
+
+[node name="SoundPlayer" parent="." index="0" instance=ExtResource("5_e5egv")]
+effect_names = PackedStringArray("Fill", "Empty")
+effect_files = PackedStringArray("res://Player/PlayerItems/WaterBucket/FillSound.wav", "res://Player/PlayerItems/WaterBucket/EmptySound.wav")

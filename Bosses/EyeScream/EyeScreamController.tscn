@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://mmj0rv8vr74h"]
+
+[ext_resource type="Script" path="res://Bosses/EyeScream/EyeScreamController.cs" id="1_8h4pn"]
+[ext_resource type="PackedScene" uid="uid://c0o67m3g1twjd" path="res://Bosses/EyeScream/ScreenEffects/ScreenEffects.tscn" id="2_3u5gu"]
+[ext_resource type="Shader" path="res://Bosses/EyeScream/IceSphere/IceSphereHandler.gdshader" id="2_6kds0"]
+[ext_resource type="PackedScene" uid="uid://tsq4u00ybmg7" path="res://Bosses/EyeScream/IceSphere/IceSphereHandler.tscn" id="3_ixerx"]
+[ext_resource type="PackedScene" uid="uid://0u7tjiku265d" path="res://Bosses/EyeScream/BackgroundEyes/BackgroundEyes.tscn" id="4_f2877"]
+[ext_resource type="PackedScene" uid="uid://dx8gt0j2bbyr3" path="res://Bosses/EyeScream/Head/EyeScreamHead.tscn" id="4_j8eo2"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="7_yn3ir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32yh1"]
+shader = ExtResource("2_6kds0")
+shader_parameter/ratio = 0.0
+
+[node name="EyeScreamController" type="Node2D"]
+script = ExtResource("1_8h4pn")
+
+[node name="ScreenEffects" parent="." instance=ExtResource("2_3u5gu")]
+
+[node name="Darkening" type="ColorRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_32yh1")
+offset_left = -370.0
+offset_top = -313.0
+offset_right = 3020.0
+offset_bottom = 1344.0
+
+[node name="ColorRect" type="ColorRect" parent="Darkening"]
+z_index = -100
+layout_mode = 0
+offset_left = 247.0
+offset_top = 217.0
+offset_right = 3121.0
+offset_bottom = 1399.0
+color = Color(1, 0, 0, 1)
+
+[node name="BackgroundEyes" parent="." instance=ExtResource("4_f2877")]
+
+[node name="IceSphereHandler" parent="." instance=ExtResource("3_ixerx")]
+metadata/_edit_lock_ = true
+
+[node name="EyeScreamHead" parent="." instance=ExtResource("4_j8eo2")]
+
+[node name="SoundPlayer" parent="." instance=ExtResource("7_yn3ir")]
+effect_names = PackedStringArray("Extinguish", "BurnStart", "BurnFinish", "Rumble")
+effect_files = PackedStringArray("res://Bosses/EyeScream/SoundEffects/Extinguish.wav", "res://Bosses/EyeScream/SoundEffects/BurnStart.wav", "res://Bosses/EyeScream/SoundEffects/BurnFinish.wav", "res://Bosses/EyeScream/SoundEffects/Rumble.mp3")

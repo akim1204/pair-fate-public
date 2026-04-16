@@ -1,0 +1,188 @@
+[gd_scene load_steps=14 format=3 uid="uid://dshr8pp6rnkm3"]
+
+[ext_resource type="Script" path="res://Bosses/EyeScream/IceSphere/IceSphere.cs" id="1_hn7mv"]
+[ext_resource type="Texture2D" uid="uid://b84y75b43ptxo" path="res://Bosses/EyeScream/IceSphere/InsideSprite.png" id="2_vf83f"]
+[ext_resource type="Texture2D" uid="uid://b2qmw5118si6x" path="res://Bosses/EyeScream/IceSphere/ShellSpritesheet.png" id="4_iyepj"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="6_e7apm"]
+[ext_resource type="Texture2D" uid="uid://bpjldfnvopk4u" path="res://Bosses/EyeScream/IceSphere/PlaceholderPupil.png" id="6_hyg0s"]
+[ext_resource type="Script" path="res://Bosses/EyeScream/IceSphere/IceSphereHurtbox.cs" id="7_m3jme"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ys6lk"]
+radius = 160.0
+
+[sub_resource type="Animation" id="Animation_fy1y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visibles/Shell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visibles/Core:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_qo8u1"]
+resource_name = "MouthClose"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visibles/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visibles/Shell:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [12, 11, 10, 9, 8, 7, 6, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_u7tfv"]
+resource_name = "ShellHurt"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visibles/Shell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_kppkr"]
+resource_name = "ShellIndicate"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visibles/Shell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visibles/Core:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0dnip"]
+resource_name = "MouthOpen"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visibles/Shell:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.45, 0.5, 0.6, 0.7, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visibles/Core:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fy415"]
+_data = {
+"RESET": SubResource("Animation_fy1y5"),
+"ShellClose": SubResource("Animation_qo8u1"),
+"ShellHurt": SubResource("Animation_u7tfv"),
+"ShellIndicate": SubResource("Animation_kppkr"),
+"ShellOpen": SubResource("Animation_0dnip")
+}
+
+[node name="IceSphere" type="Node2D"]
+z_index = -5
+script = ExtResource("1_hn7mv")
+
+[node name="Visibles" type="Node2D" parent="."]
+
+[node name="Core" type="Sprite2D" parent="Visibles"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_vf83f")
+hframes = 2
+frame = 1
+
+[node name="Pupil" type="Sprite2D" parent="Visibles"]
+scale = Vector2(5, 5)
+texture = ExtResource("6_hyg0s")
+
+[node name="Shell" type="Sprite2D" parent="Visibles"]
+scale = Vector2(5, 5)
+texture = ExtResource("4_iyepj")
+hframes = 13
+
+[node name="IceSphereHurtbox" type="Area2D" parent="."]
+visible = false
+script = ExtResource("7_m3jme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceSphereHurtbox"]
+shape = SubResource("CircleShape2D_ys6lk")
+
+[node name="SphereAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fy415")
+}
+
+[node name="SoundPlayer" parent="." instance=ExtResource("6_e7apm")]
+effect_names = PackedStringArray("Hurt", "Open")
+effect_files = PackedStringArray("res://Bosses/Jello/Sounds/EyeHit.wav", "res://Bosses/EyeScream/IceSphere/OpenSound.mp3")
+
+[connection signal="animation_finished" from="SphereAnimator" to="." method="_on_sphere_animator_animation_finished"]

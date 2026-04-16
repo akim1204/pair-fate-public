@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://qvpa1f4568hl"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_7oykl"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/PatchSpawner/InteractablePatchSpawner.cs" id="1_tl4lv"]
+[ext_resource type="Texture2D" uid="uid://dq18donm0anr7" path="res://Bosses/IsaiahBoss/StagePlatform/PatchSpawner/frosting_bowl.png" id="2_rbcds"]
+[ext_resource type="Texture2D" uid="uid://x7ht18653imi" path="res://GeneralAssets/Sprites/ShadowSprite.png" id="4_dqusq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3p2p3"]
+shader = ExtResource("1_7oykl")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="InteractablePatchSpawner" type="Sprite2D"]
+z_index = -1
+material = SubResource("ShaderMaterial_3p2p3")
+scale = Vector2(2.88045, 2.67856)
+texture = ExtResource("2_rbcds")
+script = ExtResource("1_tl4lv")
+upward_spawn_range = 500
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -3
+position = Vector2(0, 11.1094)
+scale = Vector2(0.618062, 0.772922)
+texture = ExtResource("4_dqusq")

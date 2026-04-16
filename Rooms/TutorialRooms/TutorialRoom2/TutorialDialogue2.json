@@ -1,0 +1,38 @@
+[
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "You again..."
+	},
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "How'd you get here so fast?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "If you want to pay me back for that gate you broke, go get rid of that... slime thing over there."
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "You can't do it yourself?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "I DIDN'T SAY THAT"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "The candy cane and the shield are just... really heavy for one person to hold both."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "But since you have two people, you could probably work together to block and attack together!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Oh, and you can press [ F ] to drop the item you're currently holding so your partner can pick them up." 
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Just remember to like... aim where you block or attack."
+	}
+]

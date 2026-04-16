@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvhekmuyih3ko"]
+
+[ext_resource type="PackedScene" uid="uid://dgbqdci202dru" path="res://UI/MainMenu/MainMenu.tscn" id="1_gqdya"]
+[ext_resource type="PackedScene" uid="uid://cc2g74o0v8q7f" path="res://UI/PauseMenu/PauseMenu.tscn" id="2_v7nr5"]
+[ext_resource type="PackedScene" uid="uid://dkcjtn60pyqqj" path="res://UI/Networking/NetworkJoin.tscn" id="3_n7p47"]
+[ext_resource type="Script" path="res://UI/OverlayMenu/OverlayMenu.cs" id="4_j1a1i"]
+[ext_resource type="Theme" uid="uid://cscf5j8oqjw5x" path="res://UI/Networking/NetworkTextTheme.tres" id="5_r06u5"]
+[ext_resource type="PackedScene" uid="uid://b332w73g51747" path="res://UI/DeathMenu/DeathMenu.tscn" id="6_p24uj"]
+[ext_resource type="PackedScene" uid="uid://yknoeala858b" path="res://UI/OptionsMenu/OptionsMenu.tscn" id="7_kadeu"]
+
+[node name="GameLayer" type="Node2D"]
+
+[node name="WorldLayer" type="Node2D" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="OptionsMenu" parent="UILayer" instance=ExtResource("7_kadeu")]
+visible = false
+
+[node name="PauseMenu" parent="UILayer" instance=ExtResource("2_v7nr5")]
+visible = false
+z_index = 100
+offset_left = 960.0
+offset_top = 660.0
+offset_right = -960.0
+offset_bottom = -420.0
+scale = Vector2(1.5, 1.5)
+
+[node name="MainMenu" parent="UILayer" instance=ExtResource("1_gqdya")]
+
+[node name="NetworkControl" parent="UILayer" instance=ExtResource("3_n7p47")]
+visible = false
+
+[node name="OverlayMenu" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+script = ExtResource("4_j1a1i")
+
+[node name="MessageGUI" type="Label" parent="UILayer/OverlayMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -570.0
+offset_top = 100.0
+offset_right = 570.0
+offset_bottom = 290.0
+grow_horizontal = 2
+theme = ExtResource("5_r06u5")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MessageGUI2" type="Label" parent="UILayer/OverlayMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -750.0
+offset_top = 480.0
+offset_right = 750.0
+offset_bottom = 670.0
+grow_horizontal = 2
+theme = ExtResource("5_r06u5")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 130
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SpriteDisplay" type="Sprite2D" parent="UILayer/OverlayMenu"]
+position = Vector2(0, 500)
+scale = Vector2(2, 2)
+
+[node name="DeathMenu" parent="UILayer" instance=ExtResource("6_p24uj")]
+visible = false

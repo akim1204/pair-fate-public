@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6l20afnfbexc"]
+
+[ext_resource type="Texture2D" uid="uid://stldv14skxpj" path="res://Bosses/Jello/JelloSprites/JelloEyeDeath.png" id="1_tkvtu"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloEyeDeath.cs" id="2_n6t0w"]
+
+[sub_resource type="Animation" id="Animation_f5opr"]
+resource_name = "Death"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_7384m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lu4sd"]
+_data = {
+"Death": SubResource("Animation_f5opr"),
+"RESET": SubResource("Animation_7384m")
+}
+
+[node name="JelloEyeDeath" type="Sprite2D"]
+position = Vector2(0, 40)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_tkvtu")
+offset = Vector2(0, -26)
+hframes = 8
+script = ExtResource("2_n6t0w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lu4sd")
+}

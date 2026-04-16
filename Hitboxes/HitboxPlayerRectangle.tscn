@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://kthb8dnql1gr"]
+
+[ext_resource type="Script" path="res://Hitboxes/HitboxPlayerRectangle.cs" id="1_aqvia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak5vk"]
+size = Vector2(1, 1)
+
+[node name="HitboxPlayerRectangle" type="Area2D"]
+script = ExtResource("1_aqvia")
+
+[node name="HitboxShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ak5vk")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

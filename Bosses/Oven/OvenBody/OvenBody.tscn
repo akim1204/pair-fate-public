@@ -1,0 +1,217 @@
+[gd_scene load_steps=11 format=3 uid="uid://cco8nbuhmq1hp"]
+
+[ext_resource type="Script" path="res://Bosses/Oven/OvenBody/OvenBody.cs" id="1_6syi2"]
+[ext_resource type="Texture2D" uid="uid://chhvl0mki6xdf" path="res://Bosses/Oven/OvenBody/OvenBodySprites/OvenBody.png" id="2_ayqac"]
+[ext_resource type="PackedScene" uid="uid://blt0q8f3wu88g" path="res://Bosses/Oven/OvenBody/OvenBodyFire.tscn" id="3_b0r5v"]
+
+[sub_resource type="Animation" id="Animation_a68t7"]
+resource_name = "Cry"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_w84fu"]
+resource_name = "FullIgnite"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_qxgbx"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ttigm"]
+resource_name = "LeftIgnite"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenRight:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenLeft:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_wv1k4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_glhej"]
+resource_name = "RightIgnite"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OvenLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OvenRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tm2sl"]
+_data = {
+"Cry": SubResource("Animation_a68t7"),
+"FullIgnite": SubResource("Animation_w84fu"),
+"Idle": SubResource("Animation_qxgbx"),
+"LeftIgnite": SubResource("Animation_ttigm"),
+"RESET": SubResource("Animation_wv1k4"),
+"RightIgnite": SubResource("Animation_glhej")
+}
+
+[node name="OvenBody" type="Node2D"]
+position = Vector2(960, 200)
+scale = Vector2(10, 10)
+script = ExtResource("1_6syi2")
+
+[node name="OvenLeft" type="Sprite2D" parent="."]
+position = Vector2(-96, -20)
+texture = ExtResource("2_ayqac")
+offset = Vector2(48, 10)
+hframes = 5
+
+[node name="OvenLeftLeftFire" parent="OvenLeft" instance=ExtResource("3_b0r5v")]
+position = Vector2(8, 12)
+
+[node name="OvenLeftRightFire" parent="OvenLeft" instance=ExtResource("3_b0r5v")]
+position = Vector2(46, 12)
+
+[node name="OvenRight" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+texture = ExtResource("2_ayqac")
+offset = Vector2(48, 10)
+flip_h = true
+hframes = 5
+
+[node name="OvenRightLeftFire" parent="OvenRight" instance=ExtResource("3_b0r5v")]
+position = Vector2(12, 12)
+
+[node name="OvenRightRightFire" parent="OvenRight" instance=ExtResource("3_b0r5v")]
+position = Vector2(50, 12)
+
+[node name="OvenAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tm2sl")
+}

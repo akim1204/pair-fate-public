@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://blt0q8f3wu88g"]
+
+[ext_resource type="Texture2D" uid="uid://cpg6lo3xru2hj" path="res://Bosses/Oven/OvenBody/OvenBodySprites/OvenMouth.png" id="1_p3813"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenBody/OvenBodyFire.cs" id="2_hc2jq"]
+[ext_resource type="PackedScene" uid="uid://bkjnyt8dwhvmy" path="res://Bosses/Oven/OvenSnake/OvenSnakeLeg.tscn" id="3_3jygq"]
+[ext_resource type="Texture2D" uid="uid://cg6fsjyesuwi1" path="res://Bosses/Oven/OvenBody/OvenBodySprites/FireArmUpperarm.png" id="4_5am5u"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenBody/OvenFireArm.cs" id="4_tiw7g"]
+[ext_resource type="Texture2D" uid="uid://c8xnut0kajq6t" path="res://Bosses/Oven/OvenBody/OvenBodySprites/FireArmForearm.png" id="5_wvajq"]
+[ext_resource type="Texture2D" uid="uid://bq638ighoyjc1" path="res://Bosses/Oven/OvenBody/OvenBodySprites/FireArmHand.png" id="6_s88uy"]
+[ext_resource type="Texture2D" uid="uid://d1ludximx0wt7" path="res://Bosses/Oven/OvenBody/OvenBodySprites/Lava1.png" id="7_m65ly"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="9_22trg"]
+
+[sub_resource type="Animation" id="Animation_jgi0f"]
+resource_name = "Extinguished"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5khb0"]
+resource_name = "Ignited"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_gr51c"]
+resource_name = "IgnitedOpen"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_2q4nc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sf6ro"]
+_data = {
+"Extinguished": SubResource("Animation_jgi0f"),
+"IgnitedClose": SubResource("Animation_5khb0"),
+"IgnitedOpen": SubResource("Animation_gr51c"),
+"RESET": SubResource("Animation_2q4nc")
+}
+
+[node name="OvenBodyFire" type="Sprite2D"]
+texture = ExtResource("1_p3813")
+offset = Vector2(19, 4)
+hframes = 4
+script = ExtResource("2_hc2jq")
+
+[node name="OvenBodyFireAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sf6ro")
+}
+
+[node name="LeftArm" parent="." instance=ExtResource("3_3jygq")]
+position = Vector2(0, 6)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_tiw7g")
+Orientation = -1.0
+
+[node name="Brachium" parent="LeftArm" index="0"]
+texture = ExtResource("4_5am5u")
+
+[node name="Forearm" parent="LeftArm/Brachium" index="0"]
+texture = ExtResource("5_wvajq")
+
+[node name="LeftHand" type="Sprite2D" parent="LeftArm"]
+position = Vector2(0, -12)
+rotation = 3.14159
+texture = ExtResource("6_s88uy")
+offset = Vector2(0, -8)
+flip_h = true
+
+[node name="RightArm" parent="." instance=ExtResource("3_3jygq")]
+visible = false
+position = Vector2(38, 6)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_tiw7g")
+
+[node name="Brachium" parent="RightArm" index="0"]
+texture = ExtResource("4_5am5u")
+
+[node name="Forearm" parent="RightArm/Brachium" index="0"]
+texture = ExtResource("5_wvajq")
+
+[node name="RightHand" type="Sprite2D" parent="RightArm"]
+position = Vector2(-76, -12)
+rotation = 3.14159
+texture = ExtResource("6_s88uy")
+offset = Vector2(0, -8)
+
+[node name="OvenLava" type="TextureRect" parent="."]
+z_index = -4
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 4.928
+offset_top = -6.0
+offset_right = 57.0
+offset_bottom = 754.576
+scale = Vector2(0.4, 0.2)
+texture = ExtResource("7_m65ly")
+stretch_mode = 1
+
+[node name="SoundPlayer" parent="." instance=ExtResource("9_22trg")]
+effect_names = PackedStringArray("pull", "crunch")
+effect_files = PackedStringArray("res://Rooms/TutorialRooms/TutorialRoom3New/BoulderSound.mp3", "res://Bosses/Oven/Sounds/crunch.wav")
+
+[connection signal="animation_finished" from="OvenBodyFireAnimation" to="." method="_on_oven_body_fire_animation_animation_finished"]
+
+[editable path="LeftArm"]
+[editable path="RightArm"]

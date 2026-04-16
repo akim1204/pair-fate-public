@@ -1,0 +1,146 @@
+[gd_scene load_steps=13 format=3 uid="uid://ca3pu1se5nw50"]
+
+[ext_resource type="Texture2D" uid="uid://dd7t618wtfwt3" path="res://BasicEnemies/TutorialDummy/TrainingDummyBase.png" id="1_2rji2"]
+[ext_resource type="Script" path="res://BasicEnemies/TutorialDummy/TrainingDummyHitbox.cs" id="2_3ljlp"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="3_45xl3"]
+[ext_resource type="Texture2D" uid="uid://cy2qdnqbv1t22" path="res://BasicEnemies/TutorialDummy/TraininyDummyBody.png" id="4_70a6o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ck05m"]
+radius = 22.751
+height = 56.4255
+
+[sub_resource type="Animation" id="Animation_bb2vm"]
+resource_name = "BrokenHurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummyBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_jigom"]
+resource_name = "Healthy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummyBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xrv0i"]
+resource_name = "HealthyHurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummyBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_aa0m6"]
+resource_name = "HurtHurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DummyBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_f7krf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DummyBody:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8oqd"]
+_data = {
+"BrokenHurt": SubResource("Animation_bb2vm"),
+"Healthy": SubResource("Animation_jigom"),
+"HealthyHurt": SubResource("Animation_xrv0i"),
+"HurtHurt": SubResource("Animation_aa0m6"),
+"RESET": SubResource("Animation_f7krf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihsj4"]
+size = Vector2(24.7211, 5.41822)
+
+[node name="DummyBase" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(2.48256, 2.48256)
+texture = ExtResource("1_2rji2")
+offset = Vector2(0, -30)
+
+[node name="dummyHitbox" type="Area2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("2_3ljlp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dummyHitbox"]
+position = Vector2(-0.80565, -33.4332)
+scale = Vector2(0.956078, 1)
+shape = SubResource("CapsuleShape2D_ck05m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e8oqd")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.996277, -6.84778)
+scale = Vector2(1.84211, 3.12243)
+shape = SubResource("RectangleShape2D_ihsj4")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("3_45xl3")]
+effect_names = PackedStringArray("Hit")
+effect_files = PackedStringArray("res://BasicEnemies/TutorialDummy/TrainingDummyHitSound.wav")
+
+[node name="DummyBody" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("4_70a6o")
+offset = Vector2(0, -30)
+hframes = 5

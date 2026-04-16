@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=3 uid="uid://codgek5or87as"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_uv22p"]
+[ext_resource type="PackedScene" uid="uid://b3aseh7sot2oo" path="res://Player/PlayerItems/CandyCane/ItemCandyCane.tscn" id="2_s2lig"]
+[ext_resource type="PackedScene" uid="uid://8cwqxp8tisxm" path="res://Bosses/IsaiahBoss/DragonBoss.tscn" id="3_nyynd"]
+[ext_resource type="PackedScene" uid="uid://d4b866ua030vt" path="res://Interactables/InteractDoors/InteractableDoor.tscn" id="4_ncq3w"]
+[ext_resource type="PackedScene" uid="uid://qvpa1f4568hl" path="res://Bosses/IsaiahBoss/StagePlatform/PatchSpawner/PatchSpawner.tscn" id="5_rr82l"]
+[ext_resource type="PackedScene" uid="uid://b804p7twvfoot" path="res://Tilemaps/Wing1/BorderDecoration.tscn" id="6_sqy2k"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="7_x4fms"]
+[ext_resource type="Texture2D" uid="uid://chexwynuhnxtk" path="res://Rooms/Wing1/JelloRoom/TutorialTileset.png" id="7_xn02w"]
+
+[sub_resource type="Gradient" id="Gradient_il3o5"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cdkao"]
+gradient = SubResource("Gradient_il3o5")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg8u5"]
+size = Vector2(270, 1564)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubaj6"]
+size = Vector2(991, 306)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q55w"]
+size = Vector2(482, 341)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbkud"]
+size = Vector2(2566, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pake"]
+size = Vector2(545, 258)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_uv22p")
+bgm_path = "res://Sound/BackgroundTracks/walking_thru_castle.wav"
+item_scenes = Array[PackedScene]([ExtResource("2_s2lig")])
+interactable_scenes = Array[PackedScene]([ExtResource("5_rr82l"), ExtResource("4_ncq3w")])
+boss_scenes = Array[PackedScene]([ExtResource("3_nyynd")])
+ROOM_LEFT = -576
+ROOM_RIGHT = 2096
+ROOM_TOP = 288
+ROOM_BOTTOM = 1632
+
+[node name="BossSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="BossSpawns" groups=["boss_spawns"]]
+position = Vector2(768, 512)
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(312, 1120)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1336, 1096)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(264, 936)
+rotation = 0.296706
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(768, 1248)
+scale = Vector2(673.857, 1566.49)
+
+[node name="1" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(768, 672)
+scale = Vector2(454083, 2.45389e+06)
+
+[node name="WallShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.466667)
+position = Vector2(768, 788)
+scale = Vector2(36, 0.624999)
+texture = SubResource("GradientTexture2D_cdkao")
+
+[node name="TileMap" parent="." instance=ExtResource("6_sqy2k")]
+scale = Vector2(6, 3)
+layer_0/tile_data = PackedInt32Array(524288, 196608, 3, 589824, 196608, 3, 655360, 196608, 3, 524289, 196608, 3, 589825, 196608, 3, 655361, 196608, 3, 524290, 196608, 3, 589826, 196608, 3, 655362, 196608, 3, 393219, 393216, 2, 458755, 196608, 3, 524291, 196608, 3, 589827, 196608, 3, 655363, 196608, 3, 393220, 393216, 2, 458756, 196608, 3, 524292, 196608, 3, 589828, 196608, 3, 655364, 196608, 3, 524293, 196608, 3, 589829, 196608, 3, 655365, 196608, 3, 524294, 196608, 3, 589830, 196608, 3, 655366, 196608, 3, 524295, 196608, 3, 589831, 196608, 3, 655367, 196608, 3, 524297, 196608, 3, 589833, 196608, 3, 655369, 196608, 3, 524296, 196608, 3, 589832, 196608, 3, 655368, 196608, 3, -1179641, 196608, 2, -1179640, 196608, 2, -1179639, 196608, 2, -1179638, 196608, 2, -1179637, 196608, 2, -1179636, 196608, 2, -1376252, 196608, 2, -1310716, 196608, 3, -1245180, 196608, 3, -1376251, 196608, 2, -1310715, 196608, 3, -1245179, 196608, 3, -1376250, 196608, 2, -1310714, 196608, 3, -1245178, 196608, 3, -1376249, 196608, 2, -1310713, 196608, 3, -1245177, 196608, 3, -1376248, 0, 1, -1310712, 0, 5, -1245176, 196608, 3, -1376247, 65536, 1, -1310711, 65536, 5, -1245175, 196608, 3, -1376246, 65536, 1, -1310710, 65536, 5, -1245174, 196608, 3, -1376245, 131072, 1, -1310709, 131072, 5, -1245173, 196608, 3, -1376244, 196608, 2, -1310708, 196608, 3, -1245172, 196608, 3, -1376243, 196608, 2, -1310707, 196608, 3, -1245171, 196608, 3, -1376242, 196608, 2, -1310706, 196608, 3, -1245170, 196608, 3, -1376241, 196608, 2, -1310705, 196608, 3, -1245169, 196608, 3, 393274, 327680, 1, -1507316, 1179648, 0, -1507321, 1179648, 0, 589822, 196608, 3, 655358, 196608, 3, 720894, 196608, 3, 786430, 196608, 3, 851966, 196608, 3, 917502, 196608, 3, 983038, 196608, 3, 1048574, 196608, 3, 589823, 196608, 3, 655359, 196608, 3, 720895, 196608, 3, 786431, 196608, 3, 851967, 196608, 3, 917503, 196608, 3, 983039, 196608, 3, 1048575, 196608, 3, 720896, 196608, 3, 786432, 196608, 3, 851968, 196608, 3, 917504, 196608, 3, 983040, 196608, 3, 720897, 196608, 3, 786433, 196608, 3, 851969, 196608, 3, 917505, 196608, 3, 983041, 196608, 3, 720898, 196608, 3, 786434, 196608, 3, 851970, 196608, 3, 917506, 196608, 3, 983042, 196608, 3, 720899, 196608, 3, 786435, 196608, 3, 851971, 196608, 3, 917507, 196608, 3, 983043, 196608, 3, 720900, 196608, 3, 786436, 196608, 3, 851972, 196608, 3, 917508, 196608, 3, 983044, 196608, 3, 720901, 196608, 3, 786437, 196608, 3, 851973, 196608, 3, 917509, 196608, 3, 983045, 196608, 3, 720902, 196608, 3, 786438, 196608, 3, 851974, 196608, 3, 917510, 196608, 3, 983046, 196608, 3, 720903, 196608, 3, 786439, 196608, 3, 851975, 196608, 3, 917511, 196608, 3, 983047, 196608, 3, 720904, 196608, 3, 786440, 196608, 3, 851976, 196608, 3, 917512, 196608, 3, 983048, 196608, 3, 720905, 196608, 3, 786441, 196608, 3, 851977, 196608, 3, 917513, 196608, 3, 983049, 196608, 3)
+layer_1/tile_data = PackedInt32Array(720906, 524288, 1, 262143, 196608, 0, 327679, 196608, 0, 393215, 1703936, 0, 458751, 196608, 0, 524287, 327680, 2, 1048690, 524288, 1, -1245168, 458752, 1, -1376240, 458752, 1, -1310704, 458752, 1, -1245181, 524288, 1, -1310717, 524288, 1, -1376253, 524288, 1, -1507324, 262144, 3, -1441788, 262144, 3, -1507323, 262144, 3, -1441787, 262144, 3, -1507322, 262144, 3, -1441786, 262144, 3, -1507321, 262144, 3, -1441785, 262144, 3, -1507320, 262144, 3, -1441784, 262144, 3, -1507319, 262144, 3, -1441783, 262144, 3, -1507318, 262144, 3, -1441782, 262144, 3, -1507317, 262144, 3, -1441781, 262144, 3, -1507316, 262144, 3, -1441780, 262144, 3, -1507315, 262144, 3, -1441779, 262144, 3, -1507314, 262144, 3, -1441778, 262144, 3, -1507313, 262144, 3, -1441777, 262144, 3, -1572860, 262144, 2, -1572859, 262144, 2, -1572858, 262144, 2, -1572857, 262144, 2, -1572856, 262144, 2, -1572855, 262144, 2, -1572854, 262144, 2, -1572853, 262144, 2, -1572852, 262144, 2, -1572851, 262144, 2, -1572850, 262144, 2, -1572849, 262144, 2, -1638396, 458752, 5, -1638395, 458752, 5, -1638394, 458752, 5, -1638393, 458752, 5, -1638392, 458752, 5, -1638391, 458752, 5, -1638390, 458752, 5, -1638389, 458752, 5, -1638388, 458752, 5, -1638387, 458752, 5, -1638386, 458752, 5, -1638385, 458752, 5, -1572861, 524288, 1, -1507325, 524288, 1, -1441789, 524288, 1, -1572848, 458752, 1, -1507312, 458752, 1, -1441776, 458752, 1, -1179642, 524288, 0, -1179635, 458752, 0, -1179634, 327680, 2, -1179633, 327680, 2, -1179643, 327680, 2, -1179644, 327680, 2, -1179632, 393216, 1, -1179645, 327680, 1, -1638384, 1, 0, 983037, 458752, 1, 917501, 458752, 2, 851965, 458752, 1, 786429, 458752, 1, 720893, 458752, 1, 655357, 458752, 3, 589821, 458752, 3, 524298, 524288, 1, 589834, 524288, 1, 655370, 524288, 2, 786442, 524288, 1, 851978, 524288, 2, 917514, 524288, 1, 1048586, 524288, 5, 983050, 524288, 1, 1114110, 458752, 5, 1114111, 458752, 5, 1048576, 458752, 5, 1048577, 393216, 5, 1048578, 327680, 5, 1048579, 458752, 5, 1048580, 458752, 5, 1048581, 458752, 5, 1048582, 262144, 5, 1048583, 458752, 5, 1048584, 262144, 5, 1048585, 458752, 5, 1114109, 196608, 5, 1048573, 458752, 1, 524285, 458752, 0, 458762, 524288, 0, 524286, 327680, 2, 458752, 393216, 4, 458753, 327680, 2, 458754, 393216, 4, 458758, 327680, 2, 458759, 327680, 2, 458760, 327680, 2, 458761, 327680, 2, 458749, 196608, 0, 458750, 196608, 0, 393216, 196608, 0, 393217, 196608, 0, 393218, 196608, 0, 393221, 196608, 0, 393222, 196608, 0, 393223, 196608, 0, 393224, 196608, 0, 393225, 196608, 0, 393226, 196608, 0, 327690, 196608, 0, 327689, 196608, 0, 327688, 1703936, 0, 327687, 196608, 0, 327686, 196608, 0, 327685, 196608, 0, 327684, 196608, 0, 327683, 196608, 0, 327682, 196608, 0, 327681, 196608, 0, 327680, 196608, 0, 393214, 196608, 0, 393213, 196608, 0, 327677, 196608, 0, 327678, 196608, 0, 262144, 196608, 0, 262145, 196608, 0, 262146, 196608, 0, 262147, 196608, 0, 262148, 196608, 0, 262150, 196608, 0, 262151, 196608, 0, 262152, 196608, 0, 262153, 196608, 0, 262154, 196608, 0, 196618, 196608, 0, 196617, 196608, 0, 196616, 196608, 0, 196615, 196608, 0, 196614, 196608, 0, 196613, 196608, 0, 196612, 196608, 0, 196611, 196608, 0, 196610, 196608, 0, 196609, 196608, 0, 196608, 196608, 0, 262142, 196608, 0, 262141, 196608, 0, 458757, 327680, 2, 262149, 196608, 0, 393219, 196608, 1, 393220, 196608, 1)
+layer_2/tile_data = PackedInt32Array(-1507323, 1310720, 0, -1507314, 1310720, 0, -1507320, 589824, 0, -1507317, 589824, 0)
+
+[node name="Barriers" type="Node2D" parent="."]
+visible = false
+
+[node name="Side 1" type="StaticBody2D" parent="Barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/Side 1"]
+position = Vector2(-527, 864)
+shape = SubResource("RectangleShape2D_wg8u5")
+
+[node name="Side 2" type="StaticBody2D" parent="Barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/Side 2"]
+position = Vector2(2056, 904)
+shape = SubResource("RectangleShape2D_wg8u5")
+
+[node name="Top" type="StaticBody2D" parent="Barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/Top"]
+position = Vector2(72.5, 609)
+shape = SubResource("RectangleShape2D_ubaj6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Barriers/Top"]
+position = Vector2(1448, 609)
+shape = SubResource("RectangleShape2D_ubaj6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Barriers/Top"]
+position = Vector2(784, 493.5)
+shape = SubResource("RectangleShape2D_4q55w")
+
+[node name="Bottom" type="StaticBody2D" parent="Barriers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barriers/Bottom"]
+position = Vector2(834, 1600)
+shape = SubResource("RectangleShape2D_jbkud")
+
+[node name="ExtraEntities" type="Node2D" parent="."]
+
+[node name="Exit Barrier" type="StaticBody2D" parent="ExtraEntities"]
+position = Vector2(768, 633)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExtraEntities/Exit Barrier"]
+visible = false
+shape = SubResource("RectangleShape2D_1pake")
+
+[node name="Sprite2D" type="Sprite2D" parent="ExtraEntities/Exit Barrier"]
+position = Vector2(1.90735e-06, 91)
+scale = Vector2(6, 2.75)
+texture = ExtResource("7_xn02w")
+region_enabled = true
+region_rect = Rect2(96, 128, 64, 32)
+
+[node name="DoorManager" parent="." instance=ExtResource("7_x4fms")]
+Door_Destination_Strings = PackedStringArray("res://Rooms/Wing1/EndOfDemo.tscn")
+Door_Destination_Indices = PackedInt32Array(0)

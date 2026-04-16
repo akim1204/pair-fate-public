@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwxbi31wnx0yx"]
+
+[ext_resource type="Script" path="res://Bosses/Knight/KnightArm/KnightArm.cs" id="1_utvv0"]
+[ext_resource type="Texture2D" uid="uid://bcsyg3vcr2h7w" path="res://Bosses/EyeScream/Head/FingerSegmentSprite.png" id="2_uxqed"]
+
+[node name="KnightArm" type="Node2D"]
+script = ExtResource("1_utvv0")
+
+[node name="Arm1" type="Node2D" parent="."]
+
+[node name="Arm1Sprite" type="Sprite2D" parent="Arm1"]
+position = Vector2(0, -20)
+rotation = 1.5708
+scale = Vector2(2, 3)
+texture = ExtResource("2_uxqed")
+offset = Vector2(10, -27)
+
+[node name="Arm2" type="Node2D" parent="Arm1"]
+position = Vector2(160, 0)
+rotation = 0.0959931
+
+[node name="Arm2Sprite" type="Sprite2D" parent="Arm1/Arm2"]
+position = Vector2(-1.52588e-05, -20)
+rotation = 1.5708
+scale = Vector2(2, 3)
+texture = ExtResource("2_uxqed")
+offset = Vector2(10, -27)
+
+[node name="Arm3" type="Node2D" parent="Arm1/Arm2"]
+position = Vector2(160, 0)
+rotation = 0.0959931
+
+[node name="Arm3Sprite" type="Sprite2D" parent="Arm1/Arm2/Arm3"]
+position = Vector2(0, -20)
+rotation = 1.5708
+scale = Vector2(2, 3)
+texture = ExtResource("2_uxqed")
+offset = Vector2(10, -27)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://n85f4n42e40k"]
+
+[ext_resource type="Texture2D" uid="uid://54naj68m6qac" path="res://Gameplay/Dialogue/Sprites/dialog box.png" id="1_fuelb"]
+[ext_resource type="Script" path="res://Gameplay/Dialogue/textbox.cs" id="1_wtkym"]
+[ext_resource type="FontFile" uid="uid://ceoruf2k7jp7f" path="res://Gameplay/Dialogue/Fonts/Minecraft.ttf" id="3_ed05e"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="4_ylkwa"]
+
+[node name="Textbox" type="CanvasLayer"]
+script = ExtResource("1_wtkym")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(518, 200)
+offset_left = 620.0
+offset_top = 739.0
+offset_right = 1138.0
+offset_bottom = 939.0
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 4
+texture = ExtResource("1_fuelb")
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -36.3333
+offset_right = 235.0
+offset_bottom = 65.6667
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialogue" type="Label" parent="TextureRect/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -53.3331
+offset_right = 225.0
+offset_bottom = 32.6669
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ed05e")
+theme_override_font_sizes/font_size = 20
+text = "test tesxt this is test text alsdkjflasjdflasjdkfjasldkfjladjf sdasdASDasdASDasd"
+autowrap_mode = 2
+
+[node name="continue" type="Label" parent="TextureRect/Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 455.333
+offset_top = 85.0
+offset_right = 465.333
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("3_ed05e")
+theme_override_font_sizes/font_size = 40
+text = ">"
+autowrap_mode = 1
+
+[node name="name" type="Label" parent="TextureRect/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = -40.6665
+offset_right = 225.0
+offset_bottom = -9.6665
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.309804, 0.2, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("3_ed05e")
+theme_override_font_sizes/font_size = 30
+text = "irene"
+horizontal_alignment = 1
+autowrap_mode = 1
+
+[node name="SoundPlayer" parent="." instance=ExtResource("4_ylkwa")]
+effect_names = PackedStringArray("DialogueShort", "DialogueLong")
+effect_files = PackedStringArray("res://Gameplay/Dialogue/Sounds/dialogueShortSound.wav", "res://Gameplay/Dialogue/Sounds/dialogueLongSound.wav")

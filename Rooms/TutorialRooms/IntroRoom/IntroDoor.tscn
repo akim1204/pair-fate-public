@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnljptj2mrbsw"]
+
+[ext_resource type="Texture2D" uid="uid://7g6obj2ggnoc" path="res://Rooms/TutorialRooms/IntroRoom/CastleGate.png" id="1_uf1ft"]
+[ext_resource type="Script" path="res://Rooms/TutorialRooms/IntroRoom/IntroDoor.cs" id="3_hpoiw"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="3_ova15"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="4_wdcao"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsecn"]
+resource_local_to_scene = true
+shader = ExtResource("4_wdcao")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.5
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcqod"]
+resource_local_to_scene = true
+shader = ExtResource("4_wdcao")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="IntroDoor" type="Sprite2D"]
+material = SubResource("ShaderMaterial_gsecn")
+scale = Vector2(8, 8)
+texture = ExtResource("1_uf1ft")
+offset = Vector2(0, -24)
+script = ExtResource("3_hpoiw")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("3_ova15")]
+material = SubResource("ShaderMaterial_fcqod")
+effect_names = PackedStringArray("Open")
+effect_files = PackedStringArray("res://Interactables/InteractDoors/DoorSound.wav")

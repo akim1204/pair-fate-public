@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgnj1d7625a8x"]
+
+[ext_resource type="Script" path="res://Gameplay/Displayables/ProximityMessage/ProximityMessage.cs" id="1_yjay3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t75a7"]
+size = Vector2(1027.5, 191.875)
+
+[node name="ProximityMessage" type="Area2D"]
+script = ExtResource("1_yjay3")
+
+[node name="ProximityMessageShape" type="CollisionShape2D" parent="."]
+position = Vector2(15, 123)
+shape = SubResource("RectangleShape2D_t75a7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

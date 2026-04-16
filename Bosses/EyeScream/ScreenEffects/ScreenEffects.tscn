@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0o67m3g1twjd"]
+
+[ext_resource type="Script" path="res://Bosses/EyeScream/ScreenEffects/ScreenEffects.cs" id="1_wopem"]
+[ext_resource type="Shader" path="res://Bosses/EyeScream/ScreenEffects/ScreenReorder.gdshader" id="2_pubyr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fmydu"]
+shader = ExtResource("2_pubyr")
+shader_parameter/rotation = 0.0
+shader_parameter/div_offset = 7
+shader_parameter/fragmented = false
+shader_parameter/flip_y = false
+shader_parameter/div_burned = -1.0
+shader_parameter/div_burned2 = -1.0
+shader_parameter/burn = 0.0
+
+[node name="ScreenEffects" type="CanvasLayer"]
+script = ExtResource("1_wopem")
+
+[node name="ScreenOverlay" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fmydu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://w17fwwiy4q1u"]
+
+[ext_resource type="Script" path="res://Rooms/TutorialRooms/TutorialRoom3/CookieSpawner.cs" id="1_ymvre"]
+[ext_resource type="PackedScene" uid="uid://crj2kid2nq6fi" path="res://Rooms/TutorialRooms/TutorialRoom3/boulder.tscn" id="2_w5fj4"]
+
+[node name="CookieSpawner" type="Node2D"]
+script = ExtResource("1_ymvre")
+RigidBody2DPrefab = ExtResource("2_w5fj4")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b332w73g51747"]
+
+[ext_resource type="Script" path="res://UI/DeathMenu/DeathMenu.cs" id="1_dojt7"]
+[ext_resource type="PackedScene" uid="uid://cjm6glhp6bfsc" path="res://UI/BackgroundColor.tscn" id="2_vh4oy"]
+[ext_resource type="Texture2D" uid="uid://b7h8ecvwueraw" path="res://UI/DeathMenu/DeathImage.png" id="2_w7nn3"]
+[ext_resource type="Texture2D" uid="uid://c7i7nasd71so0" path="res://UI/Networking/NetworkingSprites/BackButtonHover.png" id="3_ls0lw"]
+[ext_resource type="Texture2D" uid="uid://b3x2vo5r7s2id" path="res://UI/Networking/NetworkingSprites/BackButton.png" id="4_pwomd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5ski"]
+texture = ExtResource("3_ls0lw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3gl3"]
+texture = ExtResource("4_pwomd")
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_dojt7")
+
+[node name="DeathLabel" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("2_w7nn3")
+
+[node name="ColorRect" parent="." instance=ExtResource("2_vh4oy")]
+z_index = -10
+layout_mode = 0
+color = Color(0.160784, 0, 0, 0.34902)
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1381.0
+offset_top = 48.0
+offset_right = 1867.0
+offset_bottom = 221.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_m5ski")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q3gl3")
+
+[connection signal="button_down" from="RestartButton" to="." method="_on_restart_button_button_down"]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=11 format=3 uid="uid://w7nxj0d66ohd"]
+
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonHead/ArmBossHead.cs" id="1_md364"]
+[ext_resource type="Texture2D" uid="uid://x7ht18653imi" path="res://GeneralAssets/Sprites/ShadowSprite.png" id="2_h3be0"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonHead/ArmBossHeadHurtbox.cs" id="3_2v0pq"]
+[ext_resource type="Shader" path="res://Bosses/IsaiahBoss/DragonHead/ArmBossHead.gdshader" id="3_ox6nb"]
+[ext_resource type="Texture2D" uid="uid://dk0ilxeqax823" path="res://Bosses/IsaiahBoss/DragonHead/terrormisu_2expanded.png" id="4_kmctp"]
+[ext_resource type="Texture2D" uid="uid://cvxo5dste5wds" path="res://Bosses/IsaiahBoss/DragonHead/terrormisu_3expanded.png" id="5_b5gcq"]
+[ext_resource type="Texture2D" uid="uid://da8038lcmng88" path="res://Bosses/IsaiahBoss/DragonHead/terrormisu_1expanded.png" id="6_agn5m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbsig"]
+resource_local_to_scene = true
+shader = ExtResource("3_ox6nb")
+shader_parameter/line_color = Color(0, 0.627451, 0.901961, 1)
+shader_parameter/line_thickness = 1.2
+shader_parameter/active = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ejvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_kmctp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b5gcq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_agn5m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8eeb"]
+size = Vector2(750, 481)
+
+[node name="ArmBossHead" type="Node2D"]
+script = ExtResource("1_md364")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+position = Vector2(1, 132)
+scale = Vector2(4.83779, 1.75348)
+texture = ExtResource("2_h3be0")
+
+[node name="CakeHeadSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dbsig")
+scale = Vector2(6.22367, 5.02348)
+sprite_frames = SubResource("SpriteFrames_7ejvp")
+
+[node name="CakeBossHurtbox" type="Area2D" parent="."]
+visible = false
+script = ExtResource("3_2v0pq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CakeBossHurtbox"]
+position = Vector2(4.76837e-07, 29.5)
+scale = Vector2(0.394813, 0.394813)
+shape = SubResource("RectangleShape2D_l8eeb")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsvvd0nggd51o"]
+
+[ext_resource type="Texture2D" uid="uid://vq8xc3am1qd5" path="res://Bosses/IsaiahBoss/DragonArm/ArmCrater/crater.png" id="1_4edwb"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonArm/ArmCrater/ArmCrater.cs" id="1_moql0"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonArm/ArmCrater/CraterHitbox.cs" id="2_cgla7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q0dr5"]
+radius = 7.96213
+height = 23.8863
+
+[node name="ArmCrater" type="Node2D"]
+z_index = -2
+scale = Vector2(9.84891, 9.84891)
+script = ExtResource("1_moql0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.43051e-06)
+scale = Vector2(-1.31227, -0.822674)
+texture = ExtResource("1_4edwb")
+
+[node name="CraterHitbox" type="Area2D" parent="."]
+script = ExtResource("2_cgla7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CraterHitbox"]
+position = Vector2(0, 5.96046e-08)
+rotation = 1.5707
+scale = Vector2(-2.04035, -2.04035)
+shape = SubResource("CapsuleShape2D_q0dr5")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 15
+lifetime = 0.1
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(15, 1)
+spread = 180.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_min = 10.0
+scale_amount_max = 20.0
+
+[connection signal="area_entered" from="CraterHitbox" to="CraterHitbox" method="_on_area_entered"]

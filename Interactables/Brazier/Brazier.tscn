@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjq175wrhcva3"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_d0b3e"]
+[ext_resource type="Script" path="res://Interactables/Brazier/Brazier.cs" id="2_055bp"]
+[ext_resource type="Texture2D" uid="uid://40g18wlhblvc" path="res://Interactables/Brazier/BrazierSprite.png" id="2_wa8l7"]
+[ext_resource type="Texture2D" uid="uid://h1iipmoegxpu" path="res://Player/PlayerItems/Torch/PlaceholderFire.png" id="3_7lf55"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_7a3o4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kc4x"]
+resource_local_to_scene = true
+shader = ExtResource("1_d0b3e")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.5
+shader_parameter/active = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xahkl"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+angle_max = 360.0
+inherit_velocity_ratio = 0.4
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 20.0
+gravity = Vector3(0, -30, 0)
+
+[node name="Brazier" type="Sprite2D"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_0kc4x")
+scale = Vector2(3, 3)
+texture = ExtResource("2_wa8l7")
+offset = Vector2(0, -18)
+script = ExtResource("2_055bp")
+
+[node name="FlameEmitter" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(0, -19)
+scale = Vector2(1.5, 0.5)
+emitting = false
+amount = 45
+process_material = SubResource("ParticleProcessMaterial_xahkl")
+texture = ExtResource("3_7lf55")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("5_7a3o4")]
+effect_names = PackedStringArray("Light")
+effect_files = PackedStringArray("res://Interactables/Brazier/BrazierLight.wav")

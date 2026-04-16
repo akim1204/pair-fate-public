@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2dpm1qi7mkjl"]
+
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/Hazards/FallingObject.cs" id="1_rtlvw"]
+[ext_resource type="Texture2D" uid="uid://x7ht18653imi" path="res://GeneralAssets/Sprites/ShadowSprite.png" id="2_3hwrj"]
+[ext_resource type="Texture2D" uid="uid://dkmd8ly8po42u" path="res://Bosses/IsaiahBoss/StagePlatform/Hazards/falling_cake.png" id="3_of2ac"]
+[ext_resource type="Texture2D" uid="uid://b61l7crolsdbe" path="res://Bosses/IsaiahBoss/StagePlatform/Hazards/explosion_1.png" id="4_vurkr"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/Hazards/FallingHurtHitbox.cs" id="4_w0ets"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="6_3ynng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5w4tw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_of2ac")
+}],
+"loop": true,
+"name": &"cake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vurkr")
+}],
+"loop": true,
+"name": &"smash",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_85yw7"]
+radius = 26.0
+
+[node name="FallingObject" type="Node2D"]
+script = ExtResource("1_rtlvw")
+
+[node name="ObjectShadow" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.661119, 0.783548)
+texture = ExtResource("2_3hwrj")
+
+[node name="ObjectSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(1.25379, 0.537098)
+sprite_frames = SubResource("SpriteFrames_5w4tw")
+animation = &"smash"
+
+[node name="FallingHurtHitbox" type="Area2D" parent="."]
+visible = false
+scale = Vector2(0.806041, 0.806041)
+script = ExtResource("4_w0ets")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHurtHitbox"]
+scale = Vector2(1, 0.341337)
+shape = SubResource("CircleShape2D_85yw7")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("6_3ynng")]
+scale = Vector2(0.806041, 0.806041)
+effect_names = PackedStringArray("thump")
+effect_files = PackedStringArray("res://Bosses/IsaiahBoss/StagePlatform/Hazards/cake_fall.wav")

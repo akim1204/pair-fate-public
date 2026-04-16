@@ -1,0 +1,34 @@
+[
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "That slime thing was gross. What was it shooting at us?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Probably Jello, considering the next room belongs to-"
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "Hey look, cookies!"
+	},
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "Can I eat them?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "If they're that big, you can't even block thme. Just try to avoid touching them at all."
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "So bob and weave?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": ". . ."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "just leave."
+	}
+]

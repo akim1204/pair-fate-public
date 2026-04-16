@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://c74hsg1pqwk5c"]
+
+[ext_resource type="Script" path="res://Bosses/Oven/OvenController.cs" id="1_1ox55"]
+[ext_resource type="Texture2D" uid="uid://i1jwppn4grx3" path="res://Bosses/Oven/OvenChocolate/ChocolateSquare.png" id="2_utuc3"]
+[ext_resource type="Texture2D" uid="uid://by4pw2pndgkkx" path="res://Bosses/Oven/OvenBody/OvenBodySprites/Lava2.png" id="2_yupjq"]
+[ext_resource type="Texture2D" uid="uid://c6f454rpti2sm" path="res://Bosses/Oven/OvenBody/OvenBodySprites/Lava3.png" id="3_u54t0"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_33q1g"]
+
+[node name="OvenController" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1ox55")
+
+[node name="FullLava" type="TextureRect" parent="."]
+z_index = -5
+offset_left = -40.0
+offset_top = 180.0
+offset_right = 460.0
+offset_bottom = 740.0
+scale = Vector2(4, 2)
+texture = ExtResource("2_yupjq")
+stretch_mode = 1
+
+[node name="CenterLava" type="TextureRect" parent="FullLava"]
+z_index = 3
+layout_mode = 0
+offset_left = 218.0
+offset_top = 10.0
+offset_right = 281.0
+offset_bottom = 760.0
+texture = ExtResource("3_u54t0")
+stretch_mode = 1
+
+[node name="OriginalChocolate" type="TextureRect" parent="."]
+z_index = -2
+offset_top = 100.0
+offset_right = 480.0
+offset_bottom = 690.0
+scale = Vector2(4, 2)
+texture = ExtResource("2_utuc3")
+stretch_mode = 1
+
+[node name="OriginalChocolate" type="TextureRect" parent="OriginalChocolate"]
+z_index = -2
+layout_mode = 0
+offset_left = 203.5
+offset_top = 288.0
+offset_right = 275.5
+offset_bottom = 878.0
+texture = ExtResource("2_utuc3")
+stretch_mode = 1
+
+[node name="SoundPlayer" parent="." instance=ExtResource("5_33q1g")]
+effect_names = PackedStringArray("crunch", "oven_roar", "burrow", "rumble", "cookie_hurt", "crawl", "pull")
+effect_files = PackedStringArray("res://Bosses/Oven/Sounds/crunch.wav", "res://Bosses/Oven/Sounds/oven_roar.mp3", "res://Bosses/Oven/Sounds/burrow.mp3", "res://Bosses/Oven/Sounds/rumble.wav", "res://Bosses/Oven/Sounds/cookie_hurt.wav", "res://Bosses/Oven/Sounds/crawl.mp3", "res://Rooms/TutorialRooms/TutorialRoom3New/BoulderSound.mp3")

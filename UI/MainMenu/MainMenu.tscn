@@ -1,0 +1,122 @@
+[gd_scene load_steps=25 format=3 uid="uid://dgbqdci202dru"]
+
+[ext_resource type="Script" path="res://UI/MainMenu/MainMenu.cs" id="1_2e7tw"]
+[ext_resource type="PackedScene" uid="uid://be5xe6au4d3dq" path="res://UI/SceneLoading/LoadingScreen.tscn" id="1_8cjfu"]
+[ext_resource type="Texture2D" uid="uid://cms1tgfewgddn" path="res://UI/MainMenu/NewSprites/menu_nowindows.png" id="3_qqrst"]
+[ext_resource type="PackedScene" uid="uid://cjm6glhp6bfsc" path="res://UI/BackgroundColor.tscn" id="3_xsxov"]
+[ext_resource type="Texture2D" uid="uid://ch33buaew10u" path="res://UI/MainMenu/NewSprites/windows.png" id="4_k0125"]
+[ext_resource type="Script" path="res://UI/MainMenu/BackgroundWindows.cs" id="5_q0x8v"]
+[ext_resource type="Texture2D" uid="uid://ov1njev8pbf0" path="res://UI/MainMenu/NewSprites/play_white.png" id="6_25ipb"]
+[ext_resource type="Texture2D" uid="uid://detwvu0vynhl" path="res://UI/MainMenu/NewSprites/play_arrow.png" id="7_8fc2b"]
+[ext_resource type="Texture2D" uid="uid://cqy76mbpycp0o" path="res://UI/MainMenu/NewSprites/options_white.png" id="8_d0b1p"]
+[ext_resource type="Texture2D" uid="uid://bu5wfm20gissa" path="res://UI/MainMenu/NewSprites/options_arrow.png" id="9_rsrss"]
+[ext_resource type="PackedScene" uid="uid://yknoeala858b" path="res://UI/OptionsMenu/OptionsMenu.tscn" id="10_8kbms"]
+[ext_resource type="Texture2D" uid="uid://3x30rdix0wd1" path="res://UI/MainMenu/NewSprites/quit_white.png" id="10_vdg2f"]
+[ext_resource type="Texture2D" uid="uid://cowbdw267ee1s" path="res://UI/MainMenu/NewSprites/quit_arrow.png" id="11_o65gk"]
+[ext_resource type="Texture2D" uid="uid://b1pyyee0nlm5s" path="res://UI/MainMenu/NewSprites/arrow.png" id="12_xk1bh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oftf0"]
+texture = ExtResource("6_25ipb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xfnng"]
+texture = ExtResource("7_8fc2b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xljsp"]
+texture = ExtResource("7_8fc2b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_duh1q"]
+texture = ExtResource("8_d0b1p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jh2na"]
+texture = ExtResource("9_rsrss")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ids16"]
+texture = ExtResource("8_d0b1p")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fy4iv"]
+texture = ExtResource("9_rsrss")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aer6d"]
+texture = ExtResource("10_vdg2f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukegq"]
+texture = ExtResource("11_o65gk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cw5cy"]
+texture = ExtResource("11_o65gk")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2e7tw")
+LoadMenu = ExtResource("3_xsxov")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("3_qqrst")
+
+[node name="BackgroundWindows" type="Sprite2D" parent="."]
+position = Vector2(1299, 539)
+scale = Vector2(2, 2)
+texture = ExtResource("4_k0125")
+script = ExtResource("5_q0x8v")
+
+[node name="TextButtons" type="Node2D" parent="."]
+
+[node name="PlayIndicator" type="Button" parent="TextButtons"]
+offset_left = 400.0
+offset_top = 359.0
+offset_right = 550.0
+offset_bottom = 434.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxTexture_oftf0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xfnng")
+theme_override_styles/focus = SubResource("StyleBoxTexture_xljsp")
+
+[node name="OptionsIndicator" type="Button" parent="TextButtons"]
+offset_left = 400.0
+offset_top = 459.0
+offset_right = 676.0
+offset_bottom = 534.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxTexture_duh1q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_jh2na")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ids16")
+theme_override_styles/focus = SubResource("StyleBoxTexture_fy4iv")
+
+[node name="QuitIndicator" type="Button" parent="TextButtons"]
+offset_left = 400.0
+offset_top = 559.0
+offset_right = 555.0
+offset_bottom = 634.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxTexture_aer6d")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ukegq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_cw5cy")
+
+[node name="SelectionIndicator" type="Sprite2D" parent="."]
+position = Vector2(350, 400)
+scale = Vector2(2, 2)
+texture = ExtResource("12_xk1bh")
+
+[node name="LoadingScreen" parent="." instance=ExtResource("1_8cjfu")]
+visible = false
+layout_mode = 1
+
+[node name="OptionsDisplay" parent="." instance=ExtResource("10_8kbms")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="TextButtons/PlayIndicator" to="." method="_on_play_indicator_button_down"]
+[connection signal="button_down" from="TextButtons/OptionsIndicator" to="." method="_on_options_indicator_button_down"]
+[connection signal="button_down" from="TextButtons/QuitIndicator" to="." method="_on_quit_indicator_button_down"]
+
+[editable path="OptionsDisplay"]

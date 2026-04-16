@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4b866ua030vt"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_7o7yg"]
+[ext_resource type="Texture2D" uid="uid://dfhv6ajpb5uw3" path="res://Interactables/InteractDoors/InteractableDoorSprite.png" id="1_dmugp"]
+[ext_resource type="Script" path="res://Interactables/InteractDoorPrevented/InteractableDoorPrevented.cs" id="3_flfp4"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="4_d5pgn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6x5w"]
+resource_local_to_scene = true
+shader = ExtResource("1_7o7yg")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/active = false
+
+[node name="InteractableDoorPrevented" type="Sprite2D"]
+z_index = -2
+material = SubResource("ShaderMaterial_a6x5w")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_dmugp")
+offset = Vector2(0, -78)
+script = ExtResource("3_flfp4")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("4_d5pgn")]
+effect_names = PackedStringArray("Open")
+effect_files = PackedStringArray("res://Interactables/InteractDoors/DoorSound.wav")

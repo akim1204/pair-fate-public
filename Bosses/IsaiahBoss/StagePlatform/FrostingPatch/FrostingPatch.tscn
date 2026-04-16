@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://ilygaadjxhj6"]
+
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/FrostingPatch/FrostingPatch.cs" id="1_4fh4v"]
+[ext_resource type="Texture2D" uid="uid://c4yc3xuaswbvb" path="res://Bosses/IsaiahBoss/StagePlatform/FrostingPatch/frosting1.png" id="2_d35ll"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/StagePlatform/FrostingPatch/FrostingHitbox.cs" id="3_6kcwt"]
+[ext_resource type="Texture2D" uid="uid://c12fgx3vbk7q7" path="res://Bosses/IsaiahBoss/StagePlatform/FrostingPatch/frosting2.png" id="3_robqb"]
+[ext_resource type="Texture2D" uid="uid://b46p4vssg53ch" path="res://Bosses/IsaiahBoss/StagePlatform/FrostingPatch/frosting3.png" id="4_13uyu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjrk3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d35ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_robqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_13uyu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiddh"]
+size = Vector2(28, 7.70782)
+
+[node name="FrostingPatch" type="Node2D"]
+z_index = -1
+script = ExtResource("1_4fh4v")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.40045, -3.69444)
+scale = Vector2(1.63426, 1.02546)
+sprite_frames = SubResource("SpriteFrames_qjrk3")
+
+[node name="FrostingHitbox" type="Area2D" parent="."]
+position = Vector2(-0.40045, -11)
+script = ExtResource("3_6kcwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrostingHitbox"]
+position = Vector2(0.40045, 11)
+scale = Vector2(1.74506, 1.74506)
+shape = SubResource("RectangleShape2D_xiddh")
+
+[connection signal="area_entered" from="FrostingHitbox" to="." method="_on_fist_entered"]

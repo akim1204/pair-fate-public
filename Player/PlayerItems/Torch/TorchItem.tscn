@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyalyp8f6ejqh"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_j4b54"]
+[ext_resource type="Texture2D" uid="uid://sdy0qxgje8ug" path="res://Player/PlayerItems/Torch/PlaceholderTorch.png" id="1_jyjro"]
+[ext_resource type="Script" path="res://Player/PlayerItems/Torch/TorchItem.cs" id="1_rixnh"]
+[ext_resource type="Texture2D" uid="uid://h1iipmoegxpu" path="res://Player/PlayerItems/Torch/PlaceholderFire.png" id="4_6irrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fd54"]
+resource_local_to_scene = true
+shader = ExtResource("1_j4b54")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/active = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_soamp"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.0
+angle_max = 360.0
+inherit_velocity_ratio = 0.2
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 20.0
+gravity = Vector3(0, -30, 0)
+
+[node name="TorchItem" type="Sprite2D"]
+material = SubResource("ShaderMaterial_0fd54")
+rotation = -0.785398
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_jyjro")
+offset = Vector2(15, -15)
+script = ExtResource("1_rixnh")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(27, -27)
+amount = 35
+process_material = SubResource("ParticleProcessMaterial_soamp")
+texture = ExtResource("4_6irrp")

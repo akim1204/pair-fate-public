@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbkiwarndwe8d"]
+
+[ext_resource type="Texture2D" uid="uid://chx0kc5q647v3" path="res://Player/PlayerItems/FillableHammer/HammerSprite.png" id="1_2a1uq"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_ro3er"]
+[ext_resource type="Script" path="res://Player/PlayerItems/FillableHammer/ItemHammer.cs" id="2_w0lck"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="4_exo6n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lgbn"]
+shader = ExtResource("1_ro3er")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[sub_resource type="Animation" id="Animation_opmtt"]
+resource_name = "Empty"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lwwoq"]
+resource_name = "Full"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_iml85"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sy3pi"]
+_data = {
+"Empty": SubResource("Animation_opmtt"),
+"Full": SubResource("Animation_lwwoq"),
+"RESET": SubResource("Animation_iml85")
+}
+
+[node name="ItemHammer" type="Sprite2D"]
+material = SubResource("ShaderMaterial_3lgbn")
+scale = Vector2(2, 2)
+texture = ExtResource("1_2a1uq")
+offset = Vector2(0, -20)
+hframes = 2
+script = ExtResource("2_w0lck")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sy3pi")
+}
+
+[node name="SoundPlayer" parent="." instance=ExtResource("4_exo6n")]
+effect_names = PackedStringArray("Fill", "Empty")
+effect_files = PackedStringArray("res://Player/PlayerItems/WaterBucket/FillSound.wav", "res://Player/PlayerItems/FillableHammer/HammerHit.mp3")

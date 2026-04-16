@@ -1,0 +1,26 @@
+[
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "How did you get here before us?"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "A magician never reveals their secrets."
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "I thought you were supposed to be teaching us."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "That's not important. Something is stirring deep within the castle, and now things are shifting in ways they definetly shouldn't be."
+	},
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "Thank you for being unnecessarily cryptic."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "I do my best."
+	}
+]

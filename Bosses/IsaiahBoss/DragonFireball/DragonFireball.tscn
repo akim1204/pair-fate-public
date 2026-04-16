@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://kh1larwfu40x"]
+
+[ext_resource type="Texture2D" uid="uid://dhlq8utwc3rlk" path="res://Bosses/IsaiahBoss/DragonFireball/fireball.png" id="1_d1xiu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iswcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d1xiu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DragonFire" type="Node2D"]
+
+[node name="Fireball Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_iswcq")

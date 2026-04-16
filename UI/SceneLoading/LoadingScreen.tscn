@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://be5xe6au4d3dq"]
+
+[ext_resource type="Script" path="res://UI/SceneLoading/LoadingScreen.cs" id="1_kto6v"]
+[ext_resource type="Texture2D" uid="uid://d2c1u3273u4nw" path="res://UI/MainMenu/NewSprites/skywater.png" id="2_dh2o1"]
+[ext_resource type="Texture2D" uid="uid://b3x2vo5r7s2id" path="res://UI/Networking/NetworkingSprites/BackButton.png" id="3_1y7fg"]
+[ext_resource type="Texture2D" uid="uid://c7i7nasd71so0" path="res://UI/Networking/NetworkingSprites/BackButtonHover.png" id="4_iyo7o"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_telwv"]
+texture = ExtResource("3_1y7fg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e8l1t"]
+texture = ExtResource("4_iyo7o")
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kto6v")
+Tips = ["If your partner dies, you can revive them once", "We live in a society", "The 'P' in 'Pair Fate' stands for 'Potato'"]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_dh2o1")
+offset = Vector2(480, 270)
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 106.0
+offset_top = 102.0
+offset_right = 1011.0
+offset_bottom = 943.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1589.0
+offset_bottom = 299.0
+
+[node name="LoadingLabel" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Loading..."
+
+[node name="LevelName" type="Label" parent="Control/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "LevelName"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -14.0
+offset_top = 545.0
+offset_right = 628.0
+offset_bottom = 844.0
+
+[node name="TipLabel" type="Label" parent="Control/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Tip:"
+
+[node name="TipValue" type="Label" parent="Control/VBoxContainer2"]
+layout_mode = 2
+text = "Tip Here"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = -255.0
+offset_right = -110.0
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContinueButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1816.0
+offset_top = 977.0
+offset_right = 2216.0
+offset_bottom = 1177.0
+rotation = 3.14159
+theme_override_styles/normal = SubResource("StyleBoxTexture_telwv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_e8l1t")
+
+[connection signal="button_down" from="ContinueButton" to="." method="_on_continue_button_button_down"]

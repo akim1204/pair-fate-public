@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://panet530i5r2"]
+
+[ext_resource type="FontFile" uid="uid://ceoruf2k7jp7f" path="res://Gameplay/Dialogue/Fonts/Minecraft.ttf" id="1_qdtn5"]
+
+[resource]
+default_font = ExtResource("1_qdtn5")
+default_font_size = 60

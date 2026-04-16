@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://df60r5n37ebgk"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_ysapm"]
+[ext_resource type="Texture2D" uid="uid://dmbbp1gtrb0lg" path="res://Rooms/TutorialRooms/TutorialRoom1/TutorialHallway1.png" id="4_f8i1k"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="5_4iplc"]
+[ext_resource type="PackedScene" uid="uid://dpi4uufxabxo2" path="res://Gameplay/DialogueManager.tscn" id="6_k0tvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5s7b"]
+size = Vector2(981.21, 63.0047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bojnh"]
+size = Vector2(68.2411, 633.182)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ysapm")
+bgm_path = "res://Sound/BackgroundTracks/2023-12-22_-_Divine_Ascension_-_www.FesliyanStudios.com.mp3"
+item_scenes = Array[PackedScene]([])
+interactable_scenes = Array[PackedScene]([])
+boss_scenes = Array[PackedScene]([])
+ROOM_RIGHT = 2048
+ROOM_BOTTOM = 1536
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(1024, 768)
+scale = Vector2(4, 4)
+texture = ExtResource("4_f8i1k")
+
+[node name="Boundaries" type="Node2D" parent="."]
+scale = Vector2(2.48256, 2.48256)
+
+[node name="BoundaryCollision" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(402.81, 243.297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision"]
+position = Vector2(25.7799, -107.55)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(805.62, 486.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision2"]
+position = Vector2(-374.613, 162.332)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-47.1288, 406.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision3"]
+position = Vector2(12.4873, -27.7939)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="BoundaryCollision4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1611.24, 973.189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision4"]
+position = Vector2(-749.63, -585.686)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1132, 1439)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(952, 1437)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="DoorManager" parent="." instance=ExtResource("5_4iplc")]
+Door_Destination_Strings = PackedStringArray()
+
+[node name="DialogueManager" parent="." instance=ExtResource("6_k0tvr")]
+Dialogue_Paths = PackedStringArray("Rooms/TutorialRooms/TutorialRoom1/TutorialDialogue1.json")
+
+[node name="ExtraEntities" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="ExtraEntities"]
+offset_left = 318.0
+offset_top = 662.0
+offset_right = 2026.0
+offset_bottom = 1073.0
+theme_override_font_sizes/font_size = 200
+text = "END OF DEMO"

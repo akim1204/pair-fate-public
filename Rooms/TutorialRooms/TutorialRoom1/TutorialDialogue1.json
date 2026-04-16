@@ -1,0 +1,58 @@
+[
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "! ! !"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Who are you? How'd you get past the gates?"
+	},
+	{
+		"char_name": "???",
+		"char_dialogue": "Oh, they were unlocked!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "No they weren't. Did you break them?"
+	},
+	{
+		"char_name": "???",
+		"char_dialogue": "There was no time, we have to go save the kingdom!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "... that's futile."
+	},
+	{
+		"char_name": "???",
+		"char_dialogue": "Give us a weapon and we'll be on our way!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Well... if you insist on dying like the rest of them..."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "There should be some here... there... everywhere... Just get rid of that ugly dummy on your way out."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "Oh, and what were your names again?"
+	},
+	{
+		"char_name": "SCARLET",
+		"char_dialogue": "I'm Scarlet!"
+	},
+	{
+		"char_name": "INDIGO",
+		"char_dialogue": "And I'm INDIGO!"
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": ". . ."
+	},
+	{
+		"char_name": "MYSTERIOUS KNIGHT",
+		"char_dialogue": "how creative."
+	}
+]

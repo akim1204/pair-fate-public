@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://buqex57qduc5"]
+
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnakeHead/OvenSnakeHead.cs" id="1_1i5jo"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnakeHead/SnakeHeadHurtbox.cs" id="3_spl6k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6rpyd"]
+radius = 60.0
+
+[node name="OvenSnakeHead" type="Node2D"]
+script = ExtResource("1_1i5jo")
+
+[node name="SnakeHeadHurtbox" type="Area2D" parent="."]
+script = ExtResource("3_spl6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeHeadHurtbox"]
+shape = SubResource("CircleShape2D_6rpyd")
+
+[node name="SnakeBodyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeBodyHitbox"]
+shape = SubResource("CircleShape2D_6rpyd")
+
+[connection signal="area_entered" from="SnakeBodyHitbox" to="." method="_on_snake_head_hitbox_area_entered"]

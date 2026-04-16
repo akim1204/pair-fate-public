@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://mdrs8dstbt57"]
+
+[ext_resource type="Texture2D" uid="uid://gafcvur5tnsc" path="res://Bosses/EyeScream/Head/BodySprite.png" id="1_25wri"]
+
+[node name="BodySegmentSprite" type="Sprite2D"]
+z_index = -5
+texture = ExtResource("1_25wri")

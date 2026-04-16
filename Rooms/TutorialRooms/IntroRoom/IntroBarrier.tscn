@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://hue0q41jmve0"]
+
+[ext_resource type="Texture2D" uid="uid://c5be3oggup0dr" path="res://Rooms/TutorialRooms/IntroRoom/BarrierSprite.png" id="1_chiof"]
+[ext_resource type="Script" path="res://Rooms/TutorialRooms/IntroRoom/IntroBarrierHitbox.cs" id="2_4xayp"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="3_65no5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpy1u"]
+size = Vector2(64.8, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afirs"]
+size = Vector2(64.4, 30.4)
+
+[node name="IntroBarrier" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(2.7, 2.5)
+texture = ExtResource("1_chiof")
+
+[node name="IntroBarrierHitbox" type="Area2D" parent="."]
+script = ExtResource("2_4xayp")
+
+[node name="IntoBarrierHitboxShape" type="CollisionShape2D" parent="IntroBarrierHitbox"]
+position = Vector2(0.399963, -5.60004)
+shape = SubResource("RectangleShape2D_gpy1u")
+
+[node name="SoundPlayer" parent="IntroBarrierHitbox" instance=ExtResource("3_65no5")]
+effect_names = PackedStringArray("Break")
+effect_files = PackedStringArray("res://Rooms/TutorialRooms/IntroRoom/BarrierDestroy.mp3")
+
+[node name="IntroBarrierCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntroBarrierCollision"]
+position = Vector2(-0.200027, 9.59995)
+shape = SubResource("RectangleShape2D_afirs")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://crj2kid2nq6fi"]
+
+[ext_resource type="Texture2D" uid="uid://rypm51t8onjo" path="res://Rooms/TutorialRooms/TutorialRoom3/cookie ball 2.0.png" id="1_chr2n"]
+[ext_resource type="Texture2D" uid="uid://coj3yf8udeh8u" path="res://Player/PlaceholderShadow.png" id="2_2pfyw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1hani"]
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47xun"]
+radius = 27.3333
+
+[node name="boulder" type="RigidBody2D"]
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_1hani")
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 800)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.333333, 0)
+scale = Vector2(3.1, 3.1)
+shape = SubResource("CircleShape2D_47xun")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3.1, 3.1)
+texture = ExtResource("1_chr2n")
+
+[node name="PlayerShadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1, 101)
+scale = Vector2(2.75, 1.04688)
+texture = ExtResource("2_2pfyw")

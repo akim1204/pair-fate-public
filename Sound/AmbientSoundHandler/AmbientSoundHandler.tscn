@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://k1cvi5xcagpv"]
+
+[ext_resource type="Script" path="res://Sound/AmbientSoundHandler/AmbientSoundHandler.cs" id="1_rh8vj"]
+[ext_resource type="AudioStream" uid="uid://bjciwc36ht65l" path="res://Sound/AmbientSoundHandler/orchestral_scrape2.wav" id="2_uon2v"]
+
+[node name="AmbientSoundHandler" type="Node2D"]
+script = ExtResource("1_rh8vj")
+
+[node name="Orchestral1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uon2v")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1m0xm4mrolo7"]
+
+[ext_resource type="Script" path="res://Gameplay/Particles/Fragment.cs" id="1_xs37d"]
+
+[node name="Fragment" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_xs37d")
+
+[node name="Shape1" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, 10, 0, 0, 5, 5, 10, 2, 10, 10)
+
+[node name="Shape2" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, 10, 4, 7, 5, 5, 10, 0, 10, 10)
+
+[node name="Shape3" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, 7, 0, 3, 5, 0, 10, 3, 10, 7, 5, 10)
+
+[node name="Shape4" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(0, 10, 2, 3, 5, 0, 7, 6, 10, 10, 5, 10)

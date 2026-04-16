@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=3 uid="uid://c50ag3q3jqen1"]
+
+[ext_resource type="Texture2D" uid="uid://xeo3ip2pnjl4" path="res://Bosses/Oven/OvenOld/OvenStonePlatform/OvenStoneTile.png" id="1_3yd5m"]
+[ext_resource type="Texture2D" uid="uid://c25aq2a4aa5bo" path="res://Bosses/Oven/OvenOld/OvenBackground/OvenWall.png" id="2_qgf66"]
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="3_6icl8"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloResidue.cs" id="6_q0hvm"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloMovementInhibitor.cs" id="7_rs8ua"]
+[ext_resource type="PackedScene" uid="uid://b3aseh7sot2oo" path="res://Player/PlayerItems/CandyCane/ItemCandyCane.tscn" id="9_fviw5"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="10_gvovs"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloController.cs" id="10_wnwkr"]
+[ext_resource type="PackedScene" uid="uid://ceqgi1ix0py4p" path="res://Player/PlayerItems/ChocolateShield/ItemChocolateShield.tscn" id="11_mgxst"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljqgb"]
+resource_local_to_scene = true
+shader = ExtResource("10_gvovs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qimyh"]
+resource_local_to_scene = true
+shader = ExtResource("10_gvovs")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+shader_parameter/active = false
+
+[node name="World" type="Node2D"]
+
+[node name="OvenStonePlatformTiled" type="TextureRect" parent="."]
+z_index = -30
+offset_top = 150.0
+offset_right = 768.0
+offset_bottom = 894.0
+scale = Vector2(2.5, 1.25)
+texture = ExtResource("1_3yd5m")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="OvenWall" type="TextureRect" parent="."]
+z_index = -50
+offset_right = 640.0
+offset_bottom = 50.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_qgf66")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="1" parent="." instance=ExtResource("3_6icl8")]
+y_sort_enabled = true
+position = Vector2(650, 447)
+
+[node name="ItemCandyCane" parent="." instance=ExtResource("9_fviw5")]
+material = SubResource("ShaderMaterial_ljqgb")
+position = Vector2(865, 341)
+
+[node name="ItemChocolateShield" parent="." instance=ExtResource("11_mgxst")]
+material = SubResource("ShaderMaterial_qimyh")
+position = Vector2(905, 444)
+
+[node name="JelloController" type="Node2D" parent="."]
+script = ExtResource("10_wnwkr")
+
+[node name="JelloResidue" type="Node2D" parent="JelloController"]
+z_index = -30
+script = ExtResource("6_q0hvm")
+
+[node name="MovementInhibitor" type="Node2D" parent="."]
+script = ExtResource("7_rs8ua")

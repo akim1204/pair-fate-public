@@ -1,0 +1,215 @@
+[gd_scene load_steps=26 format=3 uid="uid://n2m4admj6rf1"]
+
+[ext_resource type="Texture2D" uid="uid://wae8mgrvw2dx" path="res://Bosses/Jello/PlaceholderEye.png" id="1_5da6m"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloEye.cs" id="2_vbvl7"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloEyeHurtbox.cs" id="3_kfhec"]
+[ext_resource type="Texture2D" uid="uid://coj3yf8udeh8u" path="res://Player/PlaceholderShadow.png" id="4_ytqua"]
+
+[sub_resource type="Animation" id="Animation_x3ggu"]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jij75"]
+resource_name = "ClosedHurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_p664y"]
+resource_name = "Closing"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_p5npx"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_v30b2"]
+resource_name = "OpenHurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ftmue"]
+resource_name = "Opening"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_tjsc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../JelloEyeSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2s0vg"]
+_data = {
+"Closed": SubResource("Animation_x3ggu"),
+"ClosedHurt": SubResource("Animation_jij75"),
+"Closing": SubResource("Animation_p664y"),
+"Open": SubResource("Animation_p5npx"),
+"OpenHurt": SubResource("Animation_v30b2"),
+"Opening": SubResource("Animation_ftmue"),
+"RESET": SubResource("Animation_tjsc0")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w4bk7"]
+animation = &"Closed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_frq8k"]
+animation = &"ClosedHurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ujmlu"]
+animation = &"Closing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejs2w"]
+animation = &"Open"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfetm"]
+animation = &"OpenHurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xrbff"]
+animation = &"Opening"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f0ssa"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3umk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mbnv0"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5bvbi"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tqyqn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6qv2d"]
+states/Closed/node = SubResource("AnimationNodeAnimation_w4bk7")
+states/Closed/position = Vector2(443, 92.5)
+states/ClosedHurt/node = SubResource("AnimationNodeAnimation_frq8k")
+states/ClosedHurt/position = Vector2(446, 220)
+states/Closing/node = SubResource("AnimationNodeAnimation_ujmlu")
+states/Closing/position = Vector2(335, 210.5)
+states/Open/node = SubResource("AnimationNodeAnimation_ejs2w")
+states/Open/position = Vector2(745, 59)
+states/OpenHurt/node = SubResource("AnimationNodeAnimation_sfetm")
+states/OpenHurt/position = Vector2(720, 178.5)
+states/Opening/node = SubResource("AnimationNodeAnimation_xrbff")
+states/Opening/position = Vector2(584.5, 184)
+transitions = ["Start", "Closed", SubResource("AnimationNodeStateMachineTransition_f0ssa"), "Opening", "Open", SubResource("AnimationNodeStateMachineTransition_j3umk"), "Closing", "Closed", SubResource("AnimationNodeStateMachineTransition_mbnv0"), "ClosedHurt", "Closed", SubResource("AnimationNodeStateMachineTransition_5bvbi"), "OpenHurt", "Open", SubResource("AnimationNodeStateMachineTransition_tqyqn")]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_upnj8"]
+radius = 7.0
+
+[node name="JelloEye" type="Node2D"]
+z_index = -1
+scale = Vector2(5, 5)
+script = ExtResource("2_vbvl7")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath(".")
+libraries = {
+"": SubResource("AnimationLibrary_2s0vg")
+}
+tree_root = SubResource("AnimationNodeStateMachine_6qv2d")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationTree")
+libraries = {
+"": SubResource("AnimationLibrary_2s0vg")
+}
+
+[node name="JelloEyeSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_5da6m")
+hframes = 4
+
+[node name="JelloEyeArea" type="Area2D" parent="JelloEyeSprite"]
+script = ExtResource("3_kfhec")
+
+[node name="JelloEyeCollider" type="CollisionShape2D" parent="JelloEyeSprite/JelloEyeArea"]
+shape = SubResource("CircleShape2D_upnj8")
+
+[node name="JelloEyeShadow" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(0.29851, 0.3)
+texture = ExtResource("4_ytqua")
+
+[connection signal="area_entered" from="JelloEyeSprite/JelloEyeArea" to="." method="_on_jello_eye_area_area_entered"]

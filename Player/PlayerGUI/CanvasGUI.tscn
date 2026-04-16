@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://mkowqqmfeb1g"]
+
+[ext_resource type="Script" path="res://Player/PlayerGUI/CanvasGUI.cs" id="1_0d7sj"]
+[ext_resource type="Script" path="res://Player/PlayerGUI/PlayerHpGui.cs" id="2_f8rxo"]
+[ext_resource type="Script" path="res://Player/PlayerGUI/BossGUI.cs" id="3_nike8"]
+[ext_resource type="Texture2D" uid="uid://c4vs1qtowokwk" path="res://Bosses/BossHealthBarLong.png" id="4_qd5db"]
+[ext_resource type="PackedScene" uid="uid://baxolfnyj38qp" path="res://Player/PlayerGUI/Tooltip.tscn" id="5_ija6o"]
+
+[node name="CanvasGUI" type="CanvasLayer"]
+script = ExtResource("1_0d7sj")
+
+[node name="PlayerGUI" type="MarginContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 24.0
+
+[node name="PlayerHealthGUI" type="VBoxContainer" parent="PlayerGUI"]
+layout_mode = 2
+
+[node name="MainHealthBar" type="HBoxContainer" parent="PlayerGUI/PlayerHealthGUI"]
+layout_mode = 2
+script = ExtResource("2_f8rxo")
+
+[node name="Heart1" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/MainHealthBar"]
+scale = Vector2(3, 3)
+offset = Vector2(15, 15)
+
+[node name="Heart2" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/MainHealthBar"]
+position = Vector2(110, 0)
+scale = Vector2(3, 3)
+offset = Vector2(15, 15)
+
+[node name="Heart3" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/MainHealthBar"]
+position = Vector2(220, 0)
+scale = Vector2(3, 3)
+offset = Vector2(15, 15)
+
+[node name="SideHealthBar" type="HBoxContainer" parent="PlayerGUI/PlayerHealthGUI"]
+layout_mode = 2
+script = ExtResource("2_f8rxo")
+
+[node name="Heart1" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/SideHealthBar"]
+position = Vector2(0, 100)
+scale = Vector2(2, 2)
+offset = Vector2(15, 15)
+
+[node name="Heart2" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/SideHealthBar"]
+position = Vector2(80, 100)
+scale = Vector2(2, 2)
+offset = Vector2(15, 15)
+
+[node name="Heart3" type="Sprite2D" parent="PlayerGUI/PlayerHealthGUI/SideHealthBar"]
+position = Vector2(160, 100)
+scale = Vector2(2, 2)
+offset = Vector2(15, 15)
+
+[node name="BossGUI" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nike8")
+
+[node name="BossHealth" type="Sprite2D" parent="BossGUI"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_qd5db")
+offset = Vector2(0, -30)
+
+[node name="Tooltip" parent="." instance=ExtResource("5_ija6o")]
+offset_left = 392.0
+offset_top = 232.0
+offset_right = 392.0
+offset_bottom = 232.0

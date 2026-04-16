@@ -1,0 +1,132 @@
+[gd_scene load_steps=16 format=3 uid="uid://n2qbwnfuamln"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_v2rko"]
+[ext_resource type="PackedScene" uid="uid://ceqgi1ix0py4p" path="res://Player/PlayerItems/ChocolateShield/ItemChocolateShield.tscn" id="2_pfbny"]
+[ext_resource type="PackedScene" uid="uid://cyalyp8f6ejqh" path="res://Player/PlayerItems/Torch/TorchItem.tscn" id="3_o1885"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="3_yk7r6"]
+[ext_resource type="PackedScene" uid="uid://b3aseh7sot2oo" path="res://Player/PlayerItems/CandyCane/ItemCandyCane.tscn" id="4_1vjuo"]
+[ext_resource type="PackedScene" uid="uid://bjq175wrhcva3" path="res://Interactables/Brazier/Brazier.tscn" id="4_6g113"]
+[ext_resource type="PackedScene" uid="uid://dpi4uufxabxo2" path="res://Gameplay/DialogueManager.tscn" id="4_g40kj"]
+[ext_resource type="PackedScene" uid="uid://mmj0rv8vr74h" path="res://Bosses/EyeScream/EyeScreamController.tscn" id="6_ysp27"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="7_4vmim"]
+[ext_resource type="PackedScene" uid="uid://0u7tjiku265d" path="res://Bosses/EyeScream/BackgroundEyes/BackgroundEyes.tscn" id="10_lyiqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5s7b"]
+size = Vector2(1063.4, 63.0047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bojnh"]
+size = Vector2(68.2411, 763.308)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80nkc"]
+resource_local_to_scene = true
+shader = ExtResource("7_4vmim")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y55as"]
+resource_local_to_scene = true
+shader = ExtResource("7_4vmim")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svbtj"]
+resource_local_to_scene = true
+shader = ExtResource("7_4vmim")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_v2rko")
+item_scenes = Array[PackedScene]([ExtResource("2_pfbny"), ExtResource("3_o1885"), ExtResource("4_1vjuo")])
+interactable_scenes = Array[PackedScene]([])
+boss_scenes = Array[PackedScene]([ExtResource("6_ysp27")])
+ROOM_RIGHT = 2560
+ROOM_BOTTOM = 1080
+
+[node name="Boundaries" type="Node2D" parent="."]
+scale = Vector2(2.48256, 2.48256)
+
+[node name="BoundaryCollision" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(402.81, 243.297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision"]
+position = Vector2(99.8969, -275.925)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(805.62, 486.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision2"]
+position = Vector2(-292.44, -19.3354)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-47.1288, 406.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision3"]
+position = Vector2(12.4871, -147.831)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="BoundaryCollision4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1611.24, 973.189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision4"]
+position = Vector2(-545.807, -695.653)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1116, 1016)
+
+[node name="1-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1116, 1016)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(972, 1014)
+
+[node name="1-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(972, 1014)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(600, 800)
+rotation = 0.610865
+
+[node name="1" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(1526, 762)
+rotation = -0.698132
+
+[node name="2" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(1200, 900)
+rotation = 0.261799
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="DoorManager" parent="." instance=ExtResource("3_yk7r6")]
+Door_Destination_Strings = PackedStringArray()
+
+[node name="DialogueManager" parent="." instance=ExtResource("4_g40kj")]
+Dialogue_Paths = PackedStringArray("Rooms/TutorialRooms/TutorialRoom1/TutorialDialogue1.json")
+
+[node name="ExtraEntities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="interactable100" parent="ExtraEntities" instance=ExtResource("4_6g113")]
+material = SubResource("ShaderMaterial_80nkc")
+position = Vector2(629, 580)
+
+[node name="interactable101" parent="ExtraEntities" instance=ExtResource("4_6g113")]
+material = SubResource("ShaderMaterial_y55as")
+position = Vector2(2022, 646)
+
+[node name="interactable102" parent="ExtraEntities" instance=ExtResource("4_6g113")]
+material = SubResource("ShaderMaterial_svbtj")
+position = Vector2(1369, 789)
+
+[node name="BackgroundEyes" parent="ExtraEntities" instance=ExtResource("10_lyiqv")]

@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=3 uid="uid://c6ge5758s64fy"]
+
+[ext_resource type="Script" path="res://Bosses/Jello/JelloNetworked.cs" id="2_bqvkk"]
+[ext_resource type="Texture2D" uid="uid://c1qkxe38jcbt0" path="res://Bosses/Jello/JelloSprites/JelloFront.png" id="2_spb4y"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloBodyHurtbox.cs" id="3_trqpd"]
+[ext_resource type="Texture2D" uid="uid://6mi0tkxqm80k" path="res://Bosses/Jello/JelloSprites/JelloBack.png" id="4_wg7yo"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="5_4303x"]
+[ext_resource type="Texture2D" uid="uid://x7ht18653imi" path="res://GeneralAssets/Sprites/ShadowSprite.png" id="6_a20ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e882q"]
+size = Vector2(314, 256)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ld1p"]
+radius = 40.0
+height = 283.0
+
+[sub_resource type="Animation" id="Animation_8qso7"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_njhq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wena7"]
+resource_name = "Rot1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_iatjw"]
+resource_name = "Rot2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_inw2p"]
+resource_name = "Split"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_n71ye"]
+resource_name = "Split2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JelloBodySprite/JelloBodyBack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a87v"]
+_data = {
+"Idle": SubResource("Animation_8qso7"),
+"RESET": SubResource("Animation_njhq4"),
+"Rot1": SubResource("Animation_wena7"),
+"Rot2": SubResource("Animation_iatjw"),
+"Split1": SubResource("Animation_inw2p"),
+"Split2": SubResource("Animation_n71ye")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gptpx"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8uo6"]
+animation = &"Moving"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2bqe8"]
+animation = &"Sliding"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8gkax"]
+states/Idle/node = SubResource("AnimationNodeAnimation_gptpx")
+states/Idle/position = Vector2(373, 139)
+states/Moving/node = SubResource("AnimationNodeAnimation_k8uo6")
+states/Moving/position = Vector2(427.5, 70.5)
+states/Sliding/node = SubResource("AnimationNodeAnimation_2bqe8")
+states/Sliding/position = Vector2(603.5, 107.5)
+
+[node name="JelloNetworked" type="Node2D"]
+script = ExtResource("2_bqvkk")
+
+[node name="JelloBodySprite" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_spb4y")
+offset = Vector2(0, -10)
+hframes = 6
+
+[node name="JelloBodyHurtbox" type="Area2D" parent="JelloBodySprite"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("3_trqpd")
+
+[node name="JelloBodyHurtboxCollisionshape" type="CollisionShape2D" parent="JelloBodySprite/JelloBodyHurtbox"]
+position = Vector2(-1, -59)
+shape = SubResource("RectangleShape2D_e882q")
+
+[node name="JelloBodyHitbox" type="Area2D" parent="JelloBodySprite"]
+scale = Vector2(0.4, 0.4)
+
+[node name="JelloBodyHitboxCollisionshape" type="CollisionShape2D" parent="JelloBodySprite/JelloBodyHitbox"]
+position = Vector2(0, 15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8ld1p")
+
+[node name="JelloBodyAnimationPlayer" type="AnimationPlayer" parent="JelloBodySprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2a87v")
+}
+
+[node name="JelloBodyAnimationTree" type="AnimationTree" parent="JelloBodySprite"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2a87v")
+}
+tree_root = SubResource("AnimationNodeStateMachine_8gkax")
+anim_player = NodePath("../JelloBodyAnimationPlayer")
+
+[node name="JelloBodyBack" type="Sprite2D" parent="JelloBodySprite"]
+z_index = -2
+y_sort_enabled = true
+texture = ExtResource("4_wg7yo")
+offset = Vector2(0, -28)
+hframes = 5
+
+[node name="SoundPlayer" parent="." instance=ExtResource("5_4303x")]
+effect_names = PackedStringArray("Bounce1", "Bounce2", "Spit", "Death", "Bounce3", "Hit")
+effect_files = PackedStringArray("res://Bosses/Jello/Sounds/Bounce1.wav", "res://Bosses/Jello/Sounds/Bounce2.wav", "res://Bosses/Jello/Sounds/Spit.wav", "res://Bosses/Jello/Sounds/Death.wav", "res://Bosses/Jello/Sounds/Bounce3.wav", "res://Bosses/Jello/Sounds/JelloHit.wav")
+
+[node name="JelloBodyShadow" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("6_a20ew")
+offset = Vector2(0, 10)
+
+[connection signal="area_entered" from="JelloBodySprite/JelloBodyHitbox" to="." method="_on_jello_body_hitbox_area_entered"]

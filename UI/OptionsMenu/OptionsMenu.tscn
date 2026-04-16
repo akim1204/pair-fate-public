@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://yknoeala858b"]
+
+[ext_resource type="Script" path="res://UI/OptionsMenu/OptionsMenu.cs" id="1_2qpjq"]
+[ext_resource type="PackedScene" uid="uid://djbpnysjn0hx0" path="res://UI/OptionsMenu/Volume Control/VolumeControl.tscn" id="1_742fw"]
+[ext_resource type="Texture2D" uid="uid://b3x2vo5r7s2id" path="res://UI/Networking/NetworkingSprites/BackButton.png" id="2_x31ls"]
+[ext_resource type="Texture2D" uid="uid://c7i7nasd71so0" path="res://UI/Networking/NetworkingSprites/BackButtonHover.png" id="3_mm3fh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_63x6k"]
+texture = ExtResource("3_mm3fh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yevxr"]
+texture = ExtResource("2_x31ls")
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2qpjq")
+
+[node name="VolumeControl" parent="." instance=ExtResource("1_742fw")]
+layout_mode = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1547.0
+offset_top = 89.0
+offset_right = 1803.0
+offset_bottom = 217.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_63x6k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_yevxr")
+
+[connection signal="button_down" from="BackButton" to="." method="_on_back_button_button_down"]

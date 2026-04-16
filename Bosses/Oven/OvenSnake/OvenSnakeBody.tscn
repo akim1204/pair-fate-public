@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://6p17f6vfrp1s"]
+
+[ext_resource type="Texture2D" uid="uid://dxn68fxaupusy" path="res://Bosses/Oven/OvenSnake/OvenSnakeSprites/OvenSnakeShadow.png" id="2_abgjt"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnake/OvenSnakeBody.cs" id="2_j6v1q"]
+[ext_resource type="PackedScene" uid="uid://bkjnyt8dwhvmy" path="res://Bosses/Oven/OvenSnake/OvenSnakeLeg.tscn" id="4_seof6"]
+[ext_resource type="PackedScene" uid="uid://di2tew77jn6st" path="res://Bosses/Oven/OvenSnakeHead/OvenSnakeSprite.tscn" id="5_32ibr"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnake/SnakeHurtbox.cs" id="5_l5kdh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eml2m"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfl0g"]
+radius = 60.0
+
+[node name="OvenSnakeBody" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("2_j6v1q")
+
+[node name="OvenSnakeBodyShadow" type="Sprite2D" parent="."]
+position = Vector2(0, 56)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_abgjt")
+
+[node name="OvenSnakeLegRight" parent="." instance=ExtResource("4_seof6")]
+position = Vector2(50, 0)
+scale = Vector2(2.5, 2.5)
+
+[node name="SnakeBodyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeBodyHitbox"]
+shape = SubResource("CircleShape2D_eml2m")
+
+[node name="SnakeHurtbox" type="Area2D" parent="."]
+script = ExtResource("5_l5kdh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeHurtbox"]
+shape = SubResource("CircleShape2D_rfl0g")
+
+[node name="OvenSnakeSprite" parent="." instance=ExtResource("5_32ibr")]
+
+[node name="OvenSnakeLegLeft" parent="." instance=ExtResource("4_seof6")]
+position = Vector2(-50, 0)
+rotation = 3.14159
+scale = Vector2(2.5, 2.5)
+Orientation = -1.0
+
+[connection signal="area_entered" from="SnakeBodyHitbox" to="." method="_on_snake_body_hitbox_area_entered"]

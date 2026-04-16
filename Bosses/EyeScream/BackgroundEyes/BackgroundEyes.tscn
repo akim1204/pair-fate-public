@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://0u7tjiku265d"]
+
+[ext_resource type="Script" path="res://Bosses/EyeScream/BackgroundEyes/BackgroundEyes.cs" id="1_v8lmk"]
+
+[node name="BackgroundEyes" type="Node2D"]
+z_index = -15
+script = ExtResource("1_v8lmk")

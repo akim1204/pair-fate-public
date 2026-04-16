@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://f6c8b583odr7"]
+
+[ext_resource type="Theme" uid="uid://cscf5j8oqjw5x" path="res://UI/Networking/NetworkTextTheme.tres" id="1_x4d0j"]
+[ext_resource type="Texture2D" uid="uid://0tgo8u0bhdc5" path="res://UI/Networking/NetworkingSprites/EmptyButton.png" id="2_nsxvc"]
+[ext_resource type="Script" path="res://UI/Networking/LoadButton.cs" id="3_23kux"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i45wg"]
+texture = ExtResource("2_nsxvc")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fapvi"]
+texture = ExtResource("2_nsxvc")
+
+[node name="Button" type="Button"]
+offset_left = 85.0
+offset_top = 62.0
+offset_right = 485.0
+offset_bottom = 262.0
+theme = ExtResource("1_x4d0j")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_i45wg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fapvi")
+text = "Template
+"
+script = ExtResource("3_23kux")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://puogdt50lev3"]
+
+[ext_resource type="Texture2D" uid="uid://dvianr4hosqqr" path="res://Bosses/Oven/OvenSprites/ChocolateBodyBreak.png" id="1_gccnu"]
+[ext_resource type="Script" path="res://Bosses/Oven/OvenSnakeHead/OvenSnakeSpriteDeath.cs" id="2_7uc6p"]
+
+[sub_resource type="Animation" id="Animation_2bmlh"]
+resource_name = "Break"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ig06x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kulup"]
+_data = {
+"Break": SubResource("Animation_2bmlh"),
+"RESET": SubResource("Animation_ig06x")
+}
+
+[node name="OvenSnakeSpriteDeath" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_gccnu")
+hframes = 6
+script = ExtResource("2_7uc6p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kulup")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

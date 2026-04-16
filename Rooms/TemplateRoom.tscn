@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://q54p3qu2ottp"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_dnw3f"]
+[ext_resource type="PackedScene" uid="uid://b3aseh7sot2oo" path="res://Player/PlayerItems/CandyCane/ItemCandyCane.tscn" id="2_uqthx"]
+[ext_resource type="PackedScene" uid="uid://c1wkfuqvtuo4x" path="res://Interactables/KnightDialogue/knight.tscn" id="4_1d4uq"]
+[ext_resource type="Texture2D" uid="uid://dmbbp1gtrb0lg" path="res://Rooms/TutorialRooms/TutorialRoom1/TutorialHallway1.png" id="5_fit2m"]
+[ext_resource type="PackedScene" uid="uid://bp3ig8i7yekya" path="res://Gameplay/DoorManager.tscn" id="6_s2vln"]
+[ext_resource type="PackedScene" uid="uid://dpi4uufxabxo2" path="res://Gameplay/DialogueManager.tscn" id="7_yotis"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5s7b"]
+size = Vector2(981.21, 63.0047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bojnh"]
+size = Vector2(68.2411, 633.182)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_dnw3f")
+item_scenes = Array[PackedScene]([ExtResource("2_uqthx")])
+interactable_scenes = Array[PackedScene]([ExtResource("4_1d4uq")])
+boss_scenes = Array[PackedScene]([])
+ROOM_RIGHT = 2048
+ROOM_BOTTOM = 1536
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(1024, 768)
+scale = Vector2(4, 4)
+texture = ExtResource("5_fit2m")
+
+[node name="Boundaries" type="Node2D" parent="."]
+scale = Vector2(2.48256, 2.48256)
+
+[node name="BoundaryCollision" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(402.81, 243.297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision"]
+position = Vector2(25.7799, -107.55)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(805.62, 486.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision2"]
+position = Vector2(-374.613, 162.332)
+shape = SubResource("RectangleShape2D_b5s7b")
+
+[node name="BoundaryCollision3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-47.1288, 406.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision3"]
+position = Vector2(12.4873, -27.7939)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="BoundaryCollision4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1611.24, 973.189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision4"]
+position = Vector2(-749.63, -585.686)
+shape = SubResource("RectangleShape2D_bojnh")
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1132, 1439)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(952, 1437)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(688, 1210)
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(1670, 464)
+
+[node name="DoorManager" parent="." instance=ExtResource("6_s2vln")]
+Door_Destination_Strings = PackedStringArray()
+
+[node name="DialogueManager" parent="." instance=ExtResource("7_yotis")]
+Dialogue_Paths = PackedStringArray("Rooms/TutorialRooms/TutorialRoom1/TutorialDialogue1.json")
+
+[node name="ExtraEntities" type="Node2D" parent="."]

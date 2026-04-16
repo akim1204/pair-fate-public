@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck0ufq2ihwlvy"]
+
+[ext_resource type="Texture2D" uid="uid://d13ue1lbtgmlr" path="res://BasicEnemies/TutorialGumdrop/PlaceholderArrow.png" id="1_colev"]
+[ext_resource type="Script" path="res://BasicEnemies/TutorialGumdrop/TutorialGumdropProjectile.cs" id="2_yt63k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_617o0"]
+size = Vector2(25, 26)
+
+[node name="TutorialGumdropProjectile" type="Sprite2D"]
+texture = ExtResource("1_colev")
+script = ExtResource("2_yt63k")
+
+[node name="TutorialGumdropProjectileHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialGumdropProjectileHitbox"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_617o0")
+
+[connection signal="area_entered" from="TutorialGumdropProjectileHitbox" to="." method="_on_tutorial_gumdrop_projectile_hitbox_area_entered"]

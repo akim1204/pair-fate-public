@@ -1,0 +1,180 @@
+[gd_scene load_steps=17 format=3 uid="uid://dl4tnxkg28by2"]
+
+[ext_resource type="Script" path="res://BasicEnemies/TutorialEye/TutorialEye.cs" id="1_tfda3"]
+[ext_resource type="Texture2D" uid="uid://dwskv6b2lyjhl" path="res://Bosses/Jello/JelloSprites/JelloEye.png" id="1_xh2i5"]
+[ext_resource type="Texture2D" uid="uid://dvo4061o4uqqv" path="res://BasicEnemies/TutorialEye/EyeSlime.png" id="3_fd0nw"]
+[ext_resource type="Texture2D" uid="uid://chps6878fc8y2" path="res://BasicEnemies/TutorialEye/EyeSlime2.png" id="4_d8hfq"]
+[ext_resource type="Script" path="res://BasicEnemies/TutorialEye/TutorialEyeHitbox.cs" id="4_jc2kq"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="6_608vh"]
+
+[sub_resource type="Animation" id="Animation_41elh"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 10, 15]
+}
+
+[sub_resource type="Animation" id="Animation_fx3sj"]
+resource_name = "Closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_15rn4"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_m18gk"]
+resource_name = "Hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 10, 0]
+}
+
+[sub_resource type="Animation" id="Animation_2vjhv"]
+resource_name = "Left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_2xxcr"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 10, 5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_hjtaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_xh4fo"]
+resource_name = "Right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EyeBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jkjtd"]
+_data = {
+"Close": SubResource("Animation_41elh"),
+"Closed": SubResource("Animation_fx3sj"),
+"Down": SubResource("Animation_15rn4"),
+"Hurt": SubResource("Animation_m18gk"),
+"Left": SubResource("Animation_2vjhv"),
+"Open": SubResource("Animation_2xxcr"),
+"RESET": SubResource("Animation_hjtaa"),
+"Right": SubResource("Animation_xh4fo")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8rf0"]
+radius = 78.3135
+
+[node name="TutorialEye" type="Node2D"]
+script = ExtResource("1_tfda3")
+
+[node name="EyeBody" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_xh2i5")
+hframes = 5
+vframes = 4
+frame = 15
+
+[node name="EyeBodyAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jkjtd")
+}
+
+[node name="EyeSlime" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.745098)
+position = Vector2(-5, 5)
+scale = Vector2(5, 5)
+texture = ExtResource("3_fd0nw")
+
+[node name="Sprite2D" type="Sprite2D" parent="EyeSlime"]
+z_index = -2
+position = Vector2(69.2, 2.4)
+texture = ExtResource("4_d8hfq")
+
+[node name="EyeHitbox" type="Area2D" parent="."]
+script = ExtResource("4_jc2kq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EyeHitbox"]
+shape = SubResource("CircleShape2D_u8rf0")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("6_608vh")]
+effect_names = PackedStringArray("Bounce1", "Bounce2", "Death", "Hit")
+effect_files = PackedStringArray("res://Bosses/Jello/Sounds/Bounce1.wav", "res://Bosses/Jello/Sounds/Bounce2.wav", "res://Bosses/Jello/Sounds/EyeDeath.wav", "res://Bosses/Jello/Sounds/EyeHit.wav")

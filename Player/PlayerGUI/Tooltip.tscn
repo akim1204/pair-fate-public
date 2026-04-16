@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://baxolfnyj38qp"]
+
+[ext_resource type="Script" path="res://Player/PlayerGUI/Tooltip.cs" id="1_quynu"]
+[ext_resource type="Texture2D" uid="uid://bow5pnie4i768" path="res://Tilemaps/Assets/Decor/sign.png" id="2_l4u6g"]
+
+[node name="Tooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_quynu")
+
+[node name="Sign" type="Sprite2D" parent="."]
+position = Vector2(952, 472)
+scale = Vector2(6.4, 5.76)
+texture = ExtResource("2_l4u6g")
+
+[node name="nameContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0.675, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 920.0
+offset_top = 328.0
+offset_right = -672.0
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemName" type="Label" parent="nameContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "CHOCOLATE SHIELD"
+autowrap_mode = 2
+uppercase = true
+
+[node name="descContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 688.0
+offset_top = 488.0
+offset_right = -732.0
+offset_bottom = -392.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemDescription" type="Label" parent="descContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+text = "asldfjasldfjlkadfj"
+vertical_alignment = 3
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 335.0
+offset_right = 808.0
+offset_bottom = 483.0
+rotation = -0.294879
+expand_mode = 5

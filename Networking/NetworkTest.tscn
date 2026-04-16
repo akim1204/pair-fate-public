@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://cnpu6f5sjtgjq"]
+
+[ext_resource type="Script" path="res://Gameplay/WorldManager.cs" id="1_sodkp"]
+[ext_resource type="PackedScene" uid="uid://b3aseh7sot2oo" path="res://Player/PlayerItems/CandyCane/ItemCandyCane.tscn" id="3_2ws1q"]
+[ext_resource type="PackedScene" uid="uid://ceqgi1ix0py4p" path="res://Player/PlayerItems/ChocolateShield/ItemChocolateShield.tscn" id="4_jqn40"]
+[ext_resource type="Texture2D" uid="uid://xeo3ip2pnjl4" path="res://Bosses/Oven/OvenOld/OvenStonePlatform/OvenStoneTile.png" id="6_5t335"]
+[ext_resource type="PackedScene" uid="uid://cmxvlxppx7hj6" path="res://Bosses/Jello/JelloControllerNetworked.tscn" id="6_oc6ju"]
+[ext_resource type="Texture2D" uid="uid://c25aq2a4aa5bo" path="res://Bosses/Oven/OvenOld/OvenBackground/OvenWall.png" id="7_yq8s6"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloMovementInhibitor.cs" id="9_alhee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6emcs"]
+size = Vector2(981.21, 63.0047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr63l"]
+size = Vector2(68.2411, 633.182)
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_sodkp")
+item_scenes = Array[PackedScene]([ExtResource("3_2ws1q"), ExtResource("4_jqn40")])
+interactable_scenes = Array[PackedScene]([])
+boss_scenes = Array[PackedScene]([ExtResource("6_oc6ju")])
+ROOM_RIGHT = 2400
+ROOM_BOTTOM = 1275
+
+[node name="PlayerSpawns" type="Node2D" parent="."]
+
+[node name="0-0" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(1255, 277)
+
+[node name="0-1" type="Node2D" parent="PlayerSpawns" groups=["player_spawns"]]
+position = Vector2(372, 313)
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(850, 300)
+
+[node name="1" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(544, 494)
+
+[node name="2" type="Node2D" parent="ItemSpawns" groups=["item_spawns"]]
+position = Vector2(200, 500)
+
+[node name="InteractableSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="InteractableSpawns" groups=["interactable_spawns"]]
+position = Vector2(300, 200)
+
+[node name="OvenStonePlatformTiled" type="TextureRect" parent="."]
+z_index = -30
+offset_top = 150.0
+offset_right = 480.0
+offset_bottom = 600.0
+scale = Vector2(5, 2.5)
+texture = ExtResource("6_5t335")
+stretch_mode = 1
+
+[node name="OvenWall" type="TextureRect" parent="."]
+z_index = -50
+offset_right = 800.0
+offset_bottom = 50.0
+scale = Vector2(3, 3)
+texture = ExtResource("7_yq8s6")
+stretch_mode = 1
+
+[node name="MovementInhibitor" type="Node2D" parent="."]
+script = ExtResource("9_alhee")
+
+[node name="BossSpawns" type="Node2D" parent="."]
+
+[node name="0" type="Node2D" parent="BossSpawns" groups=["boss_spawns"]]
+
+[node name="Boundaries" type="Node2D" parent="."]
+scale = Vector2(2.48256, 2.48256)
+
+[node name="BoundaryCollision" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(402.81, 243.297)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision"]
+position = Vector2(82.9789, -218.726)
+shape = SubResource("RectangleShape2D_6emcs")
+
+[node name="BoundaryCollision2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(805.62, 486.595)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision2"]
+position = Vector2(-326.276, 56.7957)
+shape = SubResource("RectangleShape2D_6emcs")
+
+[node name="BoundaryCollision3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-47.1288, 406.435)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision3"]
+position = Vector2(12.4871, -114.801)
+shape = SubResource("RectangleShape2D_nr63l")
+
+[node name="BoundaryCollision4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1611.24, 973.189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BoundaryCollision4"]
+position = Vector2(-609.451, -691.222)
+shape = SubResource("RectangleShape2D_nr63l")

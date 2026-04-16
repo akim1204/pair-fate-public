@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://du5i8mlfkvuir"]
+
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonArm/Arm.cs" id="1_ulidw"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonArm/DragonArmHurtbox/DragonArmHurtbox.cs" id="3_afama"]
+[ext_resource type="Texture2D" uid="uid://p6fkslls8qct" path="res://Bosses/IsaiahBoss/DragonArm/ArmAssets/tiramisu_hand.png" id="3_wxabe"]
+[ext_resource type="Script" path="res://Bosses/IsaiahBoss/DragonArm/DragonArmHitbox/DragonArmHitbox.cs" id="4_05u3r"]
+[ext_resource type="Texture2D" uid="uid://x7ht18653imi" path="res://GeneralAssets/Sprites/ShadowSprite.png" id="5_kxggk"]
+[ext_resource type="PackedScene" uid="uid://cv0fjti6ey6fv" path="res://Gameplay/SoundPlayer.tscn" id="6_l8u5r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mk4y2"]
+size = Vector2(145, 71)
+
+[node name="DragonArm" type="Node2D"]
+position = Vector2(-1, -63)
+script = ExtResource("1_ulidw")
+STICK_TIME = 6.0
+
+[node name="ArmShadow" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(0, 65)
+scale = Vector2(2.72, 1)
+texture = ExtResource("5_kxggk")
+
+[node name="ArmSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -3.09123)
+scale = Vector2(4.81815, 3.81705)
+texture = ExtResource("3_wxabe")
+
+[node name="ArmHurtbox" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, 77)
+script = ExtResource("3_afama")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmHurtbox"]
+position = Vector2(0, -57.5)
+shape = SubResource("RectangleShape2D_mk4y2")
+
+[node name="ArmHitbox" type="Area2D" parent="."]
+script = ExtResource("4_05u3r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmHitbox"]
+position = Vector2(1, 25)
+shape = SubResource("RectangleShape2D_mk4y2")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("6_l8u5r")]
+effect_names = PackedStringArray("Stomp1", "Stomp2", "Stomp3", "Stomp4")
+effect_files = PackedStringArray("res://Bosses/IsaiahBoss/DragonArm/ArmAssets/stomp1.wav", "res://Bosses/IsaiahBoss/DragonArm/ArmAssets/stomp2.wav", "res://Bosses/IsaiahBoss/DragonArm/ArmAssets/stomp3.wav", "res://Bosses/IsaiahBoss/DragonArm/ArmAssets/stomp4.wav")
+
+[connection signal="area_entered" from="ArmHitbox" to="ArmHitbox" method="_on_collision_area_area_entered"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://d07ofevjyd5ct"]
+
+[ext_resource type="Texture2D" uid="uid://cns6h73j24p7c" path="res://Player/PlayerItems/CandyCane/Candy Cane.png" id="1_384gv"]
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_hrnoi"]
+[ext_resource type="Script" path="res://Player/PlayerItems/Item.cs" id="2_12h07"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ik18n"]
+resource_local_to_scene = true
+shader = ExtResource("1_hrnoi")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[node name="Item" type="Sprite2D"]
+material = SubResource("ShaderMaterial_ik18n")
+position = Vector2(304, 118)
+scale = Vector2(2, 2)
+texture = ExtResource("1_384gv")
+script = ExtResource("2_12h07")

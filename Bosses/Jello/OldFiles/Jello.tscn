@@ -1,0 +1,140 @@
+[gd_scene load_steps=15 format=3 uid="uid://c7cxpic6hwhjo"]
+
+[ext_resource type="Script" path="res://Bosses/Jello/Jello.cs" id="1_tx58d"]
+[ext_resource type="Texture2D" uid="uid://bdotr2gjl13d7" path="res://Bosses/Jello/PlaceholderSprites.png" id="2_vdl85"]
+[ext_resource type="Script" path="res://Bosses/Jello/JelloBodyHurtbox.cs" id="3_xtaxs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uahnm"]
+size = Vector2(314, 213)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqtjn"]
+radius = 40.0
+height = 283.0
+
+[sub_resource type="Animation" id="Animation_8qso7"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rer2b"]
+resource_name = "Moving"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_njhq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vocyy"]
+resource_name = "Sliding"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JelloBodySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2a87v"]
+_data = {
+"Idle": SubResource("Animation_8qso7"),
+"Moving": SubResource("Animation_rer2b"),
+"RESET": SubResource("Animation_njhq4"),
+"Sliding": SubResource("Animation_vocyy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gptpx"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8uo6"]
+animation = &"Moving"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2bqe8"]
+animation = &"Sliding"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ehjwd"]
+states/Idle/node = SubResource("AnimationNodeAnimation_gptpx")
+states/Idle/position = Vector2(373, 139)
+states/Moving/node = SubResource("AnimationNodeAnimation_k8uo6")
+states/Moving/position = Vector2(427.5, 70.5)
+states/Sliding/node = SubResource("AnimationNodeAnimation_2bqe8")
+states/Sliding/position = Vector2(603.5, 107.5)
+
+[node name="Jello" type="Node2D"]
+script = ExtResource("1_tx58d")
+metadata/_edit_group_ = true
+
+[node name="JelloBodySprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("2_vdl85")
+offset = Vector2(0, -10)
+hframes = 2
+
+[node name="JelloBodyHurtbox" type="Area2D" parent="JelloBodySprite"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("3_xtaxs")
+
+[node name="JelloBodyHurtboxCollisionshape" type="CollisionShape2D" parent="JelloBodySprite/JelloBodyHurtbox"]
+position = Vector2(-1, -37.5)
+shape = SubResource("RectangleShape2D_uahnm")
+
+[node name="JelloBodyHitbox" type="Area2D" parent="JelloBodySprite"]
+scale = Vector2(0.2, 0.2)
+
+[node name="JelloBodyHitboxCollisionshape" type="CollisionShape2D" parent="JelloBodySprite/JelloBodyHitbox"]
+position = Vector2(0, 15)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vqtjn")
+
+[node name="JelloBodyAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2a87v")
+}
+
+[node name="JelloBodyAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2a87v")
+}
+tree_root = SubResource("AnimationNodeStateMachine_ehjwd")
+anim_player = NodePath("../JelloBodyAnimationPlayer")
+
+[connection signal="area_entered" from="JelloBodySprite/JelloBodyHitbox" to="." method="_on_jello_body_hitbox_area_entered"]

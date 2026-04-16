@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtfujvdrrhlgi"]
+
+[ext_resource type="Texture2D" uid="uid://c1qkxe38jcbt0" path="res://Bosses/Jello/JelloSprites/JelloFront.png" id="1_frdd0"]
+[ext_resource type="Texture2D" uid="uid://cakmquey2ugbx" path="res://Rooms/Wing1/JelloRoom/JelloedKey.png" id="2_hy680"]
+[ext_resource type="Texture2D" uid="uid://6mi0tkxqm80k" path="res://Bosses/Jello/JelloSprites/JelloBack.png" id="3_c55be"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b6ogt"]
+radius = 8.30001
+height = 61.2
+
+[node name="JelloFakebody" type="Sprite2D"]
+y_sort_enabled = true
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_frdd0")
+offset = Vector2(0, -16)
+hframes = 6
+
+[node name="JelloFakebodyKey" type="Sprite2D" parent="."]
+position = Vector2(-7.6, -1)
+rotation = 1.26013
+scale = Vector2(2, 2)
+texture = ExtResource("2_hy680")
+offset = Vector2(-12, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.4, -1)
+rotation = 1.5708
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_b6ogt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("3_c55be")
+hframes = 5

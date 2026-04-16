@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dax11me83yh4q"]
+
+[ext_resource type="Shader" path="res://Player/PlayerItems/outline.gdshader" id="1_1stpd"]
+[ext_resource type="Texture2D" uid="uid://b0abxfsdu4etl" path="res://Player/PlayerSprites/PlayerGrave.png" id="1_iuboy"]
+[ext_resource type="Script" path="res://Player/PlayerGraveInteractable.cs" id="2_rwn7n"]
+[ext_resource type="Texture2D" uid="uid://coj3yf8udeh8u" path="res://Player/PlaceholderShadow.png" id="4_t0ycu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_32cjm"]
+shader = ExtResource("1_1stpd")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 3.0
+shader_parameter/active = false
+
+[sub_resource type="Animation" id="Animation_psq50"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3o73y"]
+resource_name = "Spawn"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtqct"]
+_data = {
+"RESET": SubResource("Animation_psq50"),
+"Spawn": SubResource("Animation_3o73y")
+}
+
+[node name="PlayerGraveInteractable" type="Sprite2D"]
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_32cjm")
+scale = Vector2(3, 3)
+texture = ExtResource("1_iuboy")
+offset = Vector2(0, -16)
+hframes = 9
+script = ExtResource("2_rwn7n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dtqct")
+}
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_t0ycu")
